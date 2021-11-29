@@ -1,0 +1,70 @@
+03:52:51 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'bothconcattahn',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 50,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+03:52:52 INFO Preparing the vocab
+03:52:55 INFO Saved vocab and data to files
+03:52:55 INFO Using cuda:2
+03:52:55 INFO # levels: 2
+03:52:55 INFO # labels at level 0: 40
+03:52:55 INFO # labels at level 1: 50
+03:52:55 INFO 8066.1573.1729
+03:52:57 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+03:53:06 INFO 8066 instances with 12243046 tokens, Level_0 with 40 labels, Level_1 with 50 labels in the train dataset
+03:53:06 INFO 1729 instances with 3140441 tokens, Level_0 with 40 labels, Level_1 with 50 labels in the valid dataset
+03:53:06 INFO 1729 instances with 3140441 tokens, Level_0 with 40 labels, Level_1 with 50 labels in the test dataset
+03:53:06 INFO Training epoch #1
+03:59:11 INFO Learning rate at epoch #1: 0.001
+03:59:11 INFO Loss on Train at epoch #1: 0.2475, micro_f1 on Valid: 0.63774
+03:59:11 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.63774
+03:59:11 INFO Results on Valid set at epoch #1 with Averaged Loss 0.20649
+03:59:11 INFO ======== Results at level_0 ========
+03:59:11 INFO Results on Valid set at epoch #1 with Loss 0.21157: 
+[MICRO]	accuracy: 0.50902	auc: 0.92979	precision: 0.76572	recall: 0.60292	f1: 0.67463	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.41517	auc: 0.90082	precision: 0.66522	recall: 0.5071	f1: 0.5755	P@1: 0.86524	P@5: 0.64986	P@8: 0.52545	P@10: 0.46067	P@15: 0.34413
+
+03:59:11 INFO ======== Results at level_1 ========
+03:59:11 INFO Results on Valid set at epoch #1 with Loss 0.20242: 
+[MICRO]	accuracy: 0.46815	auc: 0.92233	precision: 0.72023	recall: 0.57221	f1: 0.63774	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.39452	auc: 0.89734	precision: 0.61973	recall: 0.49419	f1: 0.54989	P@1: 0.83054	P@5: 0.62256	P@8: 0.50904	P@10: 0.44847	P@15: 0.34332
+
+03:59:12 INFO Training epoch #2
