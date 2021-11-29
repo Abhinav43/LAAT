@@ -12,7 +12,7 @@ import pickle
 import pprint
 
 from transformers import AdamW
-
+from src.data_helpers.vocab import device
 
 def _load_and_cache_data(train_data, valid_data, test_data, vocab, args, logger, saved_data_file_path):
     """
@@ -53,7 +53,7 @@ def _load_and_cache_data(train_data, valid_data, test_data, vocab, args, logger,
                                 sort=True,
                                 multilabel=args.multilabel)
 
-    valid_dataset = TextDataset(valid_data, vocab,
+    valid_dataset = TextDataset(test_data, vocab,
                                 max_seq_length=args.max_seq_length,
                                 min_seq_length=args.min_seq_length,
                                 sort=True,
@@ -78,7 +78,8 @@ def _train_model(train_data, valid_data, test_data,
                  init_state_dict=None,
                  logger=None,
                  saved_data_file_path=None,
-                 checkpoint_path=None
+                 checkpoint_path=None,
+                 fol_name = None
                  ):
     """
     Train the data
@@ -165,7 +166,8 @@ def _train_model(train_data, valid_data, test_data,
                       vocab=vocab,
                       logger=logger,
                       args=args,
-                      checkpoint_path=checkpoint_path)
+                      checkpoint_path=checkpoint_path, 
+                      fol_name = fol_name)
     best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
 
     evaluator = Evaluator(model=best_model,
@@ -197,11 +199,11 @@ def _get_labels(data, args):
 def run_with_validation(training_data, valid_data, test_data,
                         vocab, args, logger=None,
                         saved_data_file_path=None,
-                        checkpoint_path=None):
+                        checkpoint_path=None, fol_name = None):
     best_model, scores = _train_model(
         train_data=training_data, valid_data=valid_data, test_data=test_data,
         vocab=vocab, args=args, logger=logger,
-        saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path)
+        saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
 
     return best_model, scores
 
@@ -258,9 +260,11 @@ def prepare_data():
     if len(logging.getLogger().handlers) > 0:
         logging.getLogger().handlers.pop()  # This is to remove the transformer logger
 
-    parser = create_args_parser()
-    args = parser.parse_args()
-    logger = create_logger(logger_name=_create_log_file_folder(args))
+    parser   = create_args_parser()
+    args     = parser.parse_args()
+    fol_name = _create_log_file_folder(args)
+    
+    logger = create_logger(logger_name= fol_name)
     logger.info("Training with \n{}\n".format(pprint.pformat(args.__dict__, indent=4)))
 
     # Read configuration from the problem name specified in the config.json file
@@ -284,7 +288,7 @@ def prepare_data():
 
     cache_folder = "{}/{}".format(configuration["cache_dir"], problem_name)
     create_folder_if_not_exist(cache_folder)
-    device_name = 'cuda' if torch.cuda.is_available() else 'cpu'
+    device_name = device
     save_vocab_file_name = "{}.pkl".format(
         to_md5("{}{}{}{}{}{}{}".format(json.dumps(configuration),
                                        embedding_file,
@@ -341,6 +345,4 @@ def prepare_data():
     if args.metric_level >= vocab.n_level():
         args.metric_level = vocab.n_level() - 1
 
-    return training_data, valid_data, test_data, vocab, args, logger, cached_file_name
-
-
+    return training_data, valid_data, test_data, vocab, args, logger, cached_file_name, fol_name
