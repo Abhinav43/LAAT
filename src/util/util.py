@@ -4,7 +4,11 @@ from sklearn.preprocessing import *
 import random
 import torch
 import hashlib
-
+import pandas as pd
+import pickle as pk
+import pprint
+import json
+import os
 
 # This is for shuffling the data and initialise the "UNKNOWN" word embedding
 random.seed(0)
@@ -245,7 +249,64 @@ def intersect_size(x, y, axis):
     return np.logical_and(x, y).sum(axis=axis).astype(float)
 
 
-def log_scores(scores, logger, epoch, prefix_text, digits=ndigits):
+
+
+def format_result(data, data_cro):
+    format_data = {}
+    for name in data:
+        acc_name = name.split(':')
+        format_data[f'{data_cro}_{acc_name[0]}'] = [float(acc_name[1])]
+        
+
+    return pd.DataFrame(format_data)
+
+
+def save_acc(file_path, micro, macro, level, args):
+    
+    template = {'micro_accuracy': [0],
+                 'macro_accuracy': [0],
+                 'micro_auc': [0],
+                 'macro_auc': [0],
+                 'micro_precision': [0],
+                 'macro_precision': [0],
+                 'micro_recall': [0],
+                 'macro_recall': [0],
+                 'micro_f1': [0],
+                 'macro_f1': [0],
+                 'micro_P@1': [0],
+                 'macro_P@1': [0],
+                 'micro_P@5': [0],
+                 'macro_P@5': [0],
+                 'micro_P@8': [0],
+                 'macro_P@8': [0],
+                 'micro_P@10': [0],
+                 'macro_P@10': [0],
+                 'micro_P@15': [0],
+                 'macro_P@15': [0], 
+                 'level'      :[0]}
+    
+    if not os.path.exists(f'{file_path}/result.csv'):
+        df = pd.DataFrame(template)
+        df.to_csv(f'{file_path}/result.csv', index=False)
+    else:
+        df = pd.read_csv(f'{file_path}/result.csv')
+    
+    micr   = format_result(micro, 'micro')
+    macr   = format_result(macro, 'macro')
+    comb   = pd.concat((micr, macr), 1)
+    comb['level'] = level
+    new_df = pd.concat((df, comb), 0).reset_index(drop=True)
+    new_df.to_csv(f'{file_path}/result.csv', index=False)
+
+    if not os.path.exists(f'{file_path}/hyperparameters.txt'):
+        with open(f'{file_path}/hyperparameters.txt', "w") as f:
+            f.write(pprint.pformat(args.__dict__, indent=4))
+    
+    return new_df
+
+
+def log_scores(scores, logger, epoch, prefix_text, fol_name = None, args = None, digits=ndigits):
+    
     if scores is None:
         return
 
@@ -254,10 +315,11 @@ def log_scores(scores, logger, epoch, prefix_text, digits=ndigits):
     for level in scores:
         if "level" in level:
             logger.info("======== Results at {} ========".format(level))
-            log_scores_per_level(scores[level], logger, epoch, prefix_text, digits)
+            log_scores_per_level(scores[level], logger, epoch, prefix_text, digits, fol_name, level, args)
 
 
-def log_scores_per_level(scores, logger, epoch, prefix_text, digits=ndigits):
+def log_scores_per_level(scores, logger, epoch, prefix_text, digits=ndigits, 
+                         fol_name = None, level = None, args = None):
     metrics = ["accuracy", "auc", "precision", "recall", "f1", "P@1", "P@5", "P@8", "P@10", "P@15"]
     macros = []
     micros = []
@@ -269,6 +331,13 @@ def log_scores_per_level(scores, logger, epoch, prefix_text, digits=ndigits):
         micro_name = "{}_{}".format("micro", metric)
         if micro_name in scores:
             micros.append("{}: {}".format(metric, round(scores[micro_name], digits)))
+    
+    
+    logging_folder = "{}/../../log_files/{}".format(os.path.dirname(os.path.abspath(__file__)), fol_name)
+
+    save_acc(logging_folder, micros, macros, level, args)
+#     with open('epoch_result.pk', 'wb') as f:
+#         pk.dump((micros, macros, fol_name, level, logging_folder, os.path.dirname(os.path.abspath(__file__)) ), f)
     if epoch is not None:
         logger.info("Results on {} at epoch #{} with Loss {}: \n[MICRO]\t{}\n[MACRO]\t{}\n"
                     .format(prefix_text, epoch, abs(round(scores["loss"], digits)), "\t".join(micros), "\t".join(macros)))
