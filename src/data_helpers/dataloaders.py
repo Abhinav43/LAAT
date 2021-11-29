@@ -113,8 +113,13 @@ class TextDataset(Dataset):
     def __getitem__(self, index):
         word_seq, label_list, _id = self.indexed_data[index]
 
-        if len(word_seq) > self.max_seq_length > 0:
+#         if len(word_seq) > self.max_seq_length > 0:
+#             word_seq = word_seq[:self.max_seq_length]
+
+        if len(word_seq) > self.max_seq_length:
             word_seq = word_seq[:self.max_seq_length]
+        else:
+            word_seq = word_seq + [0] * (self.max_seq_length - len(word_seq))
 
         if not self.multilabel:
             label_out = [None for _ in range(len(label_list))]
