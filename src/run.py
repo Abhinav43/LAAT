@@ -4,8 +4,7 @@ from src.util.util import set_random_seed
 import copy
 
 # set the random seed if needed, disable by default
-# set_random_seed(random_seed=42)
-
+set_random_seed(random_seed=42)
 
 def generate_checkpoint_dir_path(args):
     model_setting = get_model_setting(args)
@@ -19,7 +18,7 @@ def generate_checkpoint_dir_path(args):
 
 
 def main():
-    training_data, valid_data, test_data, vocab, args, logger, saved_vocab_path = prepare_data()
+    training_data, valid_data, test_data, vocab, args, logger, saved_vocab_path, fol_name = prepare_data()
     logger.info("{}.{}.{}".format(len(training_data), len(valid_data), len(test_data)))
     saved_data_file_path = "{}.data.pkl".format(saved_vocab_path.split(".pkl")[0])
 
@@ -32,9 +31,8 @@ def main():
     args.result_path = "{}/result.pkl".format(checkpoint_dir_path)
     run_with_validation(training_data, valid_data, test_data, vocab, args,
                         logger=logger, saved_data_file_path=saved_data_file_path,
-                        checkpoint_path=checkpoint_path)
+                        checkpoint_path=checkpoint_path, fol_name = fol_name)
 
 
 if __name__ == "__main__":
     main()
-
