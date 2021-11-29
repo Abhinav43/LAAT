@@ -20,7 +20,8 @@ class Trainer:
                  vocab,
                  logger,
                  args,
-                 checkpoint_path,
+                 checkpoint_path, 
+                 fol_name,
                  ):
         """
         The initialisation model
@@ -47,6 +48,7 @@ class Trainer:
         self.vocab = vocab
         self.args = args
         self.save_best_model = args.save_best_model
+        self.fol_name = fol_name
 
         # for self attetion
         self.use_regularisation = args.use_regularisation
@@ -218,7 +220,7 @@ class Trainer:
             epoch_loss = train_scores["average"]["loss"]
 
             valid_scores = evaluator.evaluate(self.valid_dataloader)
-            test_scores = evaluator.evaluate(self.test_dataloader)
+#             test_scores = evaluator.evaluate(self.test_dataloader)
 
             if self.lr_scheduler is not None:
                 self.lr_scheduler.step(valid_scores[self.metric_level][self.main_metric])
@@ -243,7 +245,7 @@ class Trainer:
                     valid_scores[self.metric_level][self.main_metric]:
                 check_to_stop = 0
                 best_valid_scores = valid_scores
-                saved_test_scores = test_scores
+#                 saved_test_scores = test_scores
                 saved_train_scores = train_scores
                 best_epoch_num = e
                 if self.save_best_model:
@@ -264,7 +266,7 @@ class Trainer:
                                          self.main_metric,
                                          self.format_number(best_valid_scores[self.metric_level][self.main_metric]),
                                          ))
-                log_scores(valid_scores, self.logger, e, "Valid set")
+                log_scores(valid_scores, self.logger, e, "Valid set", self.fol_name, self.args)
 
             # log_scores(test_scores, self.logger, e, "Test set")
 
@@ -277,7 +279,7 @@ class Trainer:
                 'epoch': e,
                 'state_dict': self.model.state_dict(),
                 'best_val': best_valid_scores,
-                'test_scores': saved_test_scores,
+#                 'test_scores': saved_test_scores,
                 'optimiser': self.optimiser.state_dict(),
                 'best_epoch_num': best_epoch_num,
                 'lr_scheduler': lr_scheduler_state_dict
@@ -289,12 +291,14 @@ class Trainer:
 
         self.logger.info("=================== BEST ===================")
         # log_scores(saved_train_scores, self.logger, best_epoch_num, "Training set")
-        log_scores(best_valid_scores, self.logger, best_epoch_num, "Valid set")
-        log_scores(saved_test_scores, self.logger, best_epoch_num, "Test set")
+        log_scores(best_valid_scores, self.logger, best_epoch_num, "Valid set", self.fol_name, self.args)
+#         log_scores(saved_test_scores, self.logger, best_epoch_num, "Test set",  self.fol_name, self.args)
 
         if self.save_results:
             import pickle
-            results = {"train": saved_train_scores, "valid": best_valid_scores, "test": saved_test_scores,
+#             results = {"train": saved_train_scores, "valid": best_valid_scores, "test": saved_test_scores,
+#                        "params": self.args, "index2label": self.vocab.index2label}
+            results = {"train": saved_train_scores, "valid": best_valid_scores, 
                        "params": self.args, "index2label": self.vocab.index2label}
 
             with open(self.saved_result_path, 'wb') as f:
@@ -305,4 +309,3 @@ class Trainer:
             best_model = torch.load(self.best_model_path)
             self.model.load_state_dict(best_model['state_dict'])
         return self.model, best_valid_scores
-
