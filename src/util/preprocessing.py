@@ -103,4 +103,3 @@ def read_data(configuration, file_path) -> list:
     return output
 
 
-
