@@ -271,19 +271,19 @@ class Trainer:
             # log_scores(test_scores, self.logger, e, "Test set")
 
             # Checkpoint save
-            lr_scheduler_state_dict = None
-            if self.lr_scheduler is not None:
-                lr_scheduler_state_dict = self.lr_scheduler.state_dict()
+#             lr_scheduler_state_dict = None
+#             if self.lr_scheduler is not None:
+#                 lr_scheduler_state_dict = self.lr_scheduler.state_dict()
 
-            self.save_checkpoint({
-                'epoch': e,
-                'state_dict': self.model.state_dict(),
-                'best_val': best_valid_scores,
-#                 'test_scores': saved_test_scores,
-                'optimiser': self.optimiser.state_dict(),
-                'best_epoch_num': best_epoch_num,
-                'lr_scheduler': lr_scheduler_state_dict
-            }, is_best)
+#             self.save_checkpoint({
+#                 'epoch': e,
+#                 'state_dict': self.model.state_dict(),
+#                 'best_val': best_valid_scores,
+# #                 'test_scores': saved_test_scores,
+#                 'optimiser': self.optimiser.state_dict(),
+#                 'best_epoch_num': best_epoch_num,
+#                 'lr_scheduler': lr_scheduler_state_dict
+#             }, is_best)
 
             if check_to_stop > patience > 0:
                 self.logger.warn("Early stopped on Valid set!")
