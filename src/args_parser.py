@@ -68,6 +68,9 @@ def create_args_parser():
                         help="Choose the embedding mode which can be fasttext, word2vec")
     parser.add_argument('--embedding_size', type=int, default=100)
     parser.add_argument("--embedding_file", type=str, default=None)
+    parser.add_argument("--exp_name", type=str, default=None)
+    
+    
 
     # Attention
     parser.add_argument("--attention_mode", type=str, choices=["hard", "self", "label", "caml"], default=None)
@@ -105,4 +108,3 @@ def _add_sub_parser_for_cnn(subparsers):
     args.add_argument("--out_channels", type=int, default=100, help="The number of out channels")
     args.add_argument("--kernel_size", type=int, default=5, help="The kernel sizes.")
     args.set_defaults(model=WordCNN)
-
