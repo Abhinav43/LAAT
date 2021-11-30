@@ -13,6 +13,7 @@ import pprint
 
 from transformers import AdamW
 from src.data_helpers.vocab import device
+from src.losses import get_l
 
 def _load_and_cache_data(train_data, valid_data, test_data, vocab, args, logger, saved_data_file_path):
     """
@@ -151,10 +152,8 @@ def _train_model(train_data, valid_data, test_data,
                                                           factor=args.lr_scheduler_factor,
                                                           patience=args.lr_scheduler_patience,
                                                           min_lr=0.0001)
-    if args.multilabel:
-        criterions = [nn.BCEWithLogitsLoss() for _ in range(vocab.n_level())]
-    else:
-        criterions = [nn.CrossEntropyLoss() for _ in range(vocab.n_level())]
+        
+    criterions = [get_l(args.loss_name, len(train_dataset), level_name, args.problem_name, device, args) for level_name in range(vocab.n_level())]
 
     trainer = Trainer(model=model,
                       train_dataloader=train_dataloader,

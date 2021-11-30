@@ -69,6 +69,9 @@ def create_args_parser():
     parser.add_argument('--embedding_size', type=int, default=100)
     parser.add_argument("--embedding_file", type=str, default=None)
     parser.add_argument("--exp_name", type=str, default=None)
+    parser.add_argument("--loss_name", type=str, default='base')
+    parser.add_argument("--reduction", type=str, default='mean')
+    
     
     
 

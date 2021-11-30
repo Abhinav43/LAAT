@@ -1,0 +1,3575 @@
+running model12:54:10 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_none',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'BCE',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'none',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:54:10 INFO Loaded vocab and data from file
+12:54:10 INFO Using cuda:2
+12:54:10 INFO # levels: 2
+12:54:10 INFO # labels at level 0: 34
+12:54:10 INFO # labels at level 1: 44
+12:54:10 INFO 5.5.5
+12:54:13 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:54:13 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:54:13 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:54:13 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:54:13 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.90batches/s]Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.90batches/s]
+Evaluating:   0%|          | 0/1 [00:00<?, ?batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.00batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  6.99batches/s]12:54:13 INFO Learning rate at epoch #1: 0.001
+12:54:13 INFO Loss on Train at epoch #1: 0.68886, micro_f1 on Valid: 0.225
+12:54:13 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.225
+12:54:13 INFO Results on Valid set at epoch #1 with Averaged Loss 0.66134
+12:54:13 INFO ======== Results at level_0 ========
+12:54:13 INFO Results on Valid set at epoch #1 with Loss 0.67541: 
+[MICRO]	accuracy: 0.14815	auc: 0.58132	precision: 0.24242	recall: 0.27586	f1: 0.25806	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.53333	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.2	P@15: 0.21333
+
+12:54:13 INFO ======== Results at level_1 ========
+12:54:13 INFO Results on Valid set at epoch #1 with Loss 0.64916: 
+[MICRO]	accuracy: 0.12676	auc: 0.53746	precision: 0.18367	recall: 0.29032	f1: 0.225	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04394	auc: 0.43333	precision: 0.04621	recall: 0.15152	f1: 0.07082	P@1: 0.2	P@5: 0.2	P@8: 0.225	P@10: 0.18	P@15: 0.2
+
+12:54:13 INFO =================== BEST ===================
+12:54:13 INFO Results on Valid set at epoch #1 with Averaged Loss 0.66134
+12:54:13 INFO ======== Results at level_0 ========
+12:54:13 INFO Results on Valid set at epoch #1 with Loss 0.67541: 
+[MICRO]	accuracy: 0.14815	auc: 0.58132	precision: 0.24242	recall: 0.27586	f1: 0.25806	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.53333	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.2	P@15: 0.21333
+
+12:54:13 INFO ======== Results at level_1 ========
+12:54:13 INFO Results on Valid set at epoch #1 with Loss 0.64916: 
+[MICRO]	accuracy: 0.12676	auc: 0.53746	precision: 0.18367	recall: 0.29032	f1: 0.225	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04394	auc: 0.43333	precision: 0.04621	recall: 0.15152	f1: 0.07082	P@1: 0.2	P@5: 0.2	P@8: 0.225	P@10: 0.18	P@15: 0.2
+
+
+kill: failed to parse argument: 'N/A'
+kill: failed to parse argument: 'N/A'
+running model12:54:17 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_mean',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'BCE',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'mean',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:54:17 INFO Loaded vocab and data from file
+12:54:17 INFO Using cuda:2
+12:54:17 INFO # levels: 2
+12:54:17 INFO # labels at level 0: 34
+12:54:17 INFO # labels at level 1: 44
+12:54:17 INFO 5.5.5
+12:54:19 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:54:19 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:54:19 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:54:19 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:54:19 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.85batches/s]Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.85batches/s]
+Evaluating:   0%|          | 0/1 [00:00<?, ?batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.05batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.05batches/s]12:54:20 INFO Learning rate at epoch #1: 0.001
+12:54:20 INFO Loss on Train at epoch #1: 0.68886, micro_f1 on Valid: 0.225
+12:54:20 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.225
+12:54:20 INFO Results on Valid set at epoch #1 with Averaged Loss 0.66134
+12:54:20 INFO ======== Results at level_0 ========
+12:54:20 INFO Results on Valid set at epoch #1 with Loss 0.67541: 
+[MICRO]	accuracy: 0.14815	auc: 0.58132	precision: 0.24242	recall: 0.27586	f1: 0.25806	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.53333	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.2	P@15: 0.21333
+
+12:54:20 INFO ======== Results at level_1 ========
+12:54:20 INFO Results on Valid set at epoch #1 with Loss 0.64916: 
+[MICRO]	accuracy: 0.12676	auc: 0.53746	precision: 0.18367	recall: 0.29032	f1: 0.225	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04394	auc: 0.43333	precision: 0.04621	recall: 0.15152	f1: 0.07082	P@1: 0.2	P@5: 0.2	P@8: 0.225	P@10: 0.18	P@15: 0.2
+
+12:54:20 INFO =================== BEST ===================
+12:54:20 INFO Results on Valid set at epoch #1 with Averaged Loss 0.66134
+12:54:20 INFO ======== Results at level_0 ========
+12:54:20 INFO Results on Valid set at epoch #1 with Loss 0.67541: 
+[MICRO]	accuracy: 0.14815	auc: 0.58132	precision: 0.24242	recall: 0.27586	f1: 0.25806	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.53333	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.2	P@15: 0.21333
+
+12:54:20 INFO ======== Results at level_1 ========
+12:54:20 INFO Results on Valid set at epoch #1 with Loss 0.64916: 
+[MICRO]	accuracy: 0.12676	auc: 0.53746	precision: 0.18367	recall: 0.29032	f1: 0.225	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04394	auc: 0.43333	precision: 0.04621	recall: 0.15152	f1: 0.07082	P@1: 0.2	P@5: 0.2	P@8: 0.225	P@10: 0.18	P@15: 0.2
+
+
+kill: failed to parse argument: 'N/A'
+kill: failed to parse argument: 'N/A'
+running model12:54:23 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'BCE',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:54:23 INFO Loaded vocab and data from file
+12:54:23 INFO Using cuda:2
+12:54:23 INFO # levels: 2
+12:54:23 INFO # labels at level 0: 34
+12:54:23 INFO # labels at level 1: 44
+12:54:23 INFO 5.5.5
+12:54:26 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:54:26 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:54:26 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:54:26 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:54:26 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.93batches/s]Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.93batches/s]
+Evaluating:   0%|          | 0/1 [00:00<?, ?batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.21batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.20batches/s]12:54:26 INFO Learning rate at epoch #1: 0.001
+12:54:26 INFO Loss on Train at epoch #1: 0.68886, micro_f1 on Valid: 0.225
+12:54:26 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.225
+12:54:26 INFO Results on Valid set at epoch #1 with Averaged Loss 0.66134
+12:54:26 INFO ======== Results at level_0 ========
+12:54:26 INFO Results on Valid set at epoch #1 with Loss 0.67541: 
+[MICRO]	accuracy: 0.14815	auc: 0.58132	precision: 0.24242	recall: 0.27586	f1: 0.25806	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.53333	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.2	P@15: 0.21333
+
+12:54:26 INFO ======== Results at level_1 ========
+12:54:26 INFO Results on Valid set at epoch #1 with Loss 0.64916: 
+[MICRO]	accuracy: 0.12676	auc: 0.53746	precision: 0.18367	recall: 0.29032	f1: 0.225	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04394	auc: 0.43333	precision: 0.04621	recall: 0.15152	f1: 0.07082	P@1: 0.2	P@5: 0.2	P@8: 0.225	P@10: 0.18	P@15: 0.2
+
+12:54:26 INFO =================== BEST ===================
+12:54:26 INFO Results on Valid set at epoch #1 with Averaged Loss 0.66134
+12:54:26 INFO ======== Results at level_0 ========
+12:54:26 INFO Results on Valid set at epoch #1 with Loss 0.67541: 
+[MICRO]	accuracy: 0.14815	auc: 0.58132	precision: 0.24242	recall: 0.27586	f1: 0.25806	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.53333	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.2	P@15: 0.21333
+
+12:54:26 INFO ======== Results at level_1 ========
+12:54:26 INFO Results on Valid set at epoch #1 with Loss 0.64916: 
+[MICRO]	accuracy: 0.12676	auc: 0.53746	precision: 0.18367	recall: 0.29032	f1: 0.225	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04394	auc: 0.43333	precision: 0.04621	recall: 0.15152	f1: 0.07082	P@1: 0.2	P@5: 0.2	P@8: 0.225	P@10: 0.18	P@15: 0.2
+
+
+kill: failed to parse argument: 'N/A'
+kill: failed to parse argument: 'N/A'
+running model12:54:30 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_none',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FL',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'none',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:54:30 INFO Loaded vocab and data from file
+12:54:30 INFO Using cuda:2
+12:54:30 INFO # levels: 2
+12:54:30 INFO # labels at level 0: 34
+12:54:30 INFO # labels at level 1: 44
+12:54:30 INFO 5.5.5
+12:54:32 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:54:32 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:54:32 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:54:32 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:54:32 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.89batches/s]Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.89batches/s]
+Evaluating:   0%|          | 0/1 [00:00<?, ?batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.39batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.38batches/s]12:54:33 INFO Learning rate at epoch #1: 0.001
+12:54:33 INFO Loss on Train at epoch #1: 0.08636, micro_f1 on Valid: 0.21176
+12:54:33 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.21176
+12:54:33 INFO Results on Valid set at epoch #1 with Averaged Loss 0.08011
+12:54:33 INFO ======== Results at level_0 ========
+12:54:33 INFO Results on Valid set at epoch #1 with Loss 0.08289: 
+[MICRO]	accuracy: 0.13559	auc: 0.58694	precision: 0.21053	recall: 0.27586	f1: 0.23881	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.0598	auc: 0.54583	precision: 0.07745	recall: 0.15196	f1: 0.10261	P@1: 0.2	P@5: 0.2	P@8: 0.2	P@10: 0.24	P@15: 0.24
+
+12:54:33 INFO ======== Results at level_1 ========
+12:54:33 INFO Results on Valid set at epoch #1 with Loss 0.0777: 
+[MICRO]	accuracy: 0.11842	auc: 0.52944	precision: 0.16667	recall: 0.29032	f1: 0.21176	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04205	auc: 0.43	precision: 0.04432	recall: 0.15152	f1: 0.06858	P@1: 0.2	P@5: 0.2	P@8: 0.175	P@10: 0.18	P@15: 0.2
+
+12:54:33 INFO =================== BEST ===================
+12:54:33 INFO Results on Valid set at epoch #1 with Averaged Loss 0.08011
+12:54:33 INFO ======== Results at level_0 ========
+12:54:33 INFO Results on Valid set at epoch #1 with Loss 0.08289: 
+[MICRO]	accuracy: 0.13559	auc: 0.58694	precision: 0.21053	recall: 0.27586	f1: 0.23881	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.0598	auc: 0.54583	precision: 0.07745	recall: 0.15196	f1: 0.10261	P@1: 0.2	P@5: 0.2	P@8: 0.2	P@10: 0.24	P@15: 0.24
+
+12:54:33 INFO ======== Results at level_1 ========
+12:54:33 INFO Results on Valid set at epoch #1 with Loss 0.0777: 
+[MICRO]	accuracy: 0.11842	auc: 0.52944	precision: 0.16667	recall: 0.29032	f1: 0.21176	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04205	auc: 0.43	precision: 0.04432	recall: 0.15152	f1: 0.06858	P@1: 0.2	P@5: 0.2	P@8: 0.175	P@10: 0.18	P@15: 0.2
+
+
+kill: failed to parse argument: 'N/A'
+kill: failed to parse argument: 'N/A'
+running model12:54:37 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_mean',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FL',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'mean',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:54:37 INFO Loaded vocab and data from file
+12:54:37 INFO Using cuda:2
+12:54:37 INFO # levels: 2
+12:54:37 INFO # labels at level 0: 34
+12:54:37 INFO # labels at level 1: 44
+12:54:37 INFO 5.5.5
+12:54:39 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:54:39 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:54:39 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:54:39 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:54:39 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.96batches/s]Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.96batches/s]
+Evaluating:   0%|          | 0/1 [00:00<?, ?batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.11batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.10batches/s]12:54:39 INFO Learning rate at epoch #1: 0.001
+12:54:39 INFO Loss on Train at epoch #1: 0.08636, micro_f1 on Valid: 0.21176
+12:54:39 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.21176
+12:54:39 INFO Results on Valid set at epoch #1 with Averaged Loss 0.08011
+12:54:39 INFO ======== Results at level_0 ========
+12:54:39 INFO Results on Valid set at epoch #1 with Loss 0.08289: 
+[MICRO]	accuracy: 0.13559	auc: 0.58694	precision: 0.21053	recall: 0.27586	f1: 0.23881	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.0598	auc: 0.54583	precision: 0.07745	recall: 0.15196	f1: 0.10261	P@1: 0.2	P@5: 0.2	P@8: 0.2	P@10: 0.24	P@15: 0.24
+
+12:54:39 INFO ======== Results at level_1 ========
+12:54:39 INFO Results on Valid set at epoch #1 with Loss 0.0777: 
+[MICRO]	accuracy: 0.11842	auc: 0.52944	precision: 0.16667	recall: 0.29032	f1: 0.21176	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04205	auc: 0.43	precision: 0.04432	recall: 0.15152	f1: 0.06858	P@1: 0.2	P@5: 0.2	P@8: 0.175	P@10: 0.18	P@15: 0.2
+
+12:54:39 INFO =================== BEST ===================
+12:54:39 INFO Results on Valid set at epoch #1 with Averaged Loss 0.08011
+12:54:39 INFO ======== Results at level_0 ========
+12:54:39 INFO Results on Valid set at epoch #1 with Loss 0.08289: 
+[MICRO]	accuracy: 0.13559	auc: 0.58694	precision: 0.21053	recall: 0.27586	f1: 0.23881	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.0598	auc: 0.54583	precision: 0.07745	recall: 0.15196	f1: 0.10261	P@1: 0.2	P@5: 0.2	P@8: 0.2	P@10: 0.24	P@15: 0.24
+
+12:54:39 INFO ======== Results at level_1 ========
+12:54:39 INFO Results on Valid set at epoch #1 with Loss 0.0777: 
+[MICRO]	accuracy: 0.11842	auc: 0.52944	precision: 0.16667	recall: 0.29032	f1: 0.21176	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04205	auc: 0.43	precision: 0.04432	recall: 0.15152	f1: 0.06858	P@1: 0.2	P@5: 0.2	P@8: 0.175	P@10: 0.18	P@15: 0.2
+
+
+kill: failed to parse argument: 'N/A'
+kill: failed to parse argument: 'N/A'
+running model12:54:43 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FL',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:54:43 INFO Loaded vocab and data from file
+12:54:43 INFO Using cuda:2
+12:54:43 INFO # levels: 2
+12:54:43 INFO # labels at level 0: 34
+12:54:43 INFO # labels at level 1: 44
+12:54:43 INFO 5.5.5
+12:54:45 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:54:45 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:54:45 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:54:45 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:54:45 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.90batches/s]Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.90batches/s]
+Evaluating:   0%|          | 0/1 [00:00<?, ?batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.10batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.09batches/s]12:54:46 INFO Learning rate at epoch #1: 0.001
+12:54:46 INFO Loss on Train at epoch #1: 0.08636, micro_f1 on Valid: 0.21176
+12:54:46 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.21176
+12:54:46 INFO Results on Valid set at epoch #1 with Averaged Loss 0.08011
+12:54:46 INFO ======== Results at level_0 ========
+12:54:46 INFO Results on Valid set at epoch #1 with Loss 0.08289: 
+[MICRO]	accuracy: 0.13559	auc: 0.58694	precision: 0.21053	recall: 0.27586	f1: 0.23881	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.0598	auc: 0.54583	precision: 0.07745	recall: 0.15196	f1: 0.10261	P@1: 0.2	P@5: 0.2	P@8: 0.2	P@10: 0.24	P@15: 0.24
+
+12:54:46 INFO ======== Results at level_1 ========
+12:54:46 INFO Results on Valid set at epoch #1 with Loss 0.0777: 
+[MICRO]	accuracy: 0.11842	auc: 0.52944	precision: 0.16667	recall: 0.29032	f1: 0.21176	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04205	auc: 0.43	precision: 0.04432	recall: 0.15152	f1: 0.06858	P@1: 0.2	P@5: 0.2	P@8: 0.175	P@10: 0.18	P@15: 0.2
+
+12:54:46 INFO =================== BEST ===================
+12:54:46 INFO Results on Valid set at epoch #1 with Averaged Loss 0.08011
+12:54:46 INFO ======== Results at level_0 ========
+12:54:46 INFO Results on Valid set at epoch #1 with Loss 0.08289: 
+[MICRO]	accuracy: 0.13559	auc: 0.58694	precision: 0.21053	recall: 0.27586	f1: 0.23881	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.0598	auc: 0.54583	precision: 0.07745	recall: 0.15196	f1: 0.10261	P@1: 0.2	P@5: 0.2	P@8: 0.2	P@10: 0.24	P@15: 0.24
+
+12:54:46 INFO ======== Results at level_1 ========
+12:54:46 INFO Results on Valid set at epoch #1 with Loss 0.0777: 
+[MICRO]	accuracy: 0.11842	auc: 0.52944	precision: 0.16667	recall: 0.29032	f1: 0.21176	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04205	auc: 0.43	precision: 0.04432	recall: 0.15152	f1: 0.06858	P@1: 0.2	P@5: 0.2	P@8: 0.175	P@10: 0.18	P@15: 0.2
+
+
+kill: failed to parse argument: 'N/A'
+kill: failed to parse argument: 'N/A'
+running model12:54:50 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_none',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'CBloss',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'none',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:54:50 INFO Loaded vocab and data from file
+12:54:50 INFO Using cuda:2
+12:54:50 INFO # levels: 2
+12:54:50 INFO # labels at level 0: 34
+12:54:50 INFO # labels at level 1: 44
+12:54:50 INFO 5.5.5
+12:54:52 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:54:52 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:54:52 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:54:52 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:54:52 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 107, in forward
+    cls_score, label.float(), weight=weight, reduction='none')
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 247, in binary_cross_entropy
+    pred, label.float(), weight, reduction='none')
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/functional.py", line 2829, in binary_cross_entropy_with_logits
+    return torch.binary_cross_entropy_with_logits(input, target, weight, pos_weight, reduction_enum)
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:54:56 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_mean',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'CBloss',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'mean',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:54:56 INFO Loaded vocab and data from file
+12:54:56 INFO Using cuda:2
+12:54:56 INFO # levels: 2
+12:54:56 INFO # labels at level 0: 34
+12:54:56 INFO # labels at level 1: 44
+12:54:56 INFO 5.5.5
+12:54:58 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:54:58 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:54:58 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:54:58 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:54:58 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 107, in forward
+    cls_score, label.float(), weight=weight, reduction='none')
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 247, in binary_cross_entropy
+    pred, label.float(), weight, reduction='none')
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/functional.py", line 2829, in binary_cross_entropy_with_logits
+    return torch.binary_cross_entropy_with_logits(input, target, weight, pos_weight, reduction_enum)
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:55:02 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'CBloss',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:55:02 INFO Loaded vocab and data from file
+12:55:02 INFO Using cuda:2
+12:55:02 INFO # levels: 2
+12:55:02 INFO # labels at level 0: 34
+12:55:02 INFO # labels at level 1: 44
+12:55:02 INFO 5.5.5
+12:55:04 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:55:04 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:55:04 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:55:04 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:55:04 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 107, in forward
+    cls_score, label.float(), weight=weight, reduction='none')
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 247, in binary_cross_entropy
+    pred, label.float(), weight, reduction='none')
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/functional.py", line 2829, in binary_cross_entropy_with_logits
+    return torch.binary_cross_entropy_with_logits(input, target, weight, pos_weight, reduction_enum)
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:55:07 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_none',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'R-BCE-Focal',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'none',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:55:07 INFO Loaded vocab and data from file
+12:55:07 INFO Using cuda:2
+12:55:07 INFO # levels: 2
+12:55:07 INFO # labels at level 0: 34
+12:55:07 INFO # labels at level 1: 44
+12:55:07 INFO 5.5.5
+12:55:10 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:55:10 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:55:10 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:55:10 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:55:10 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 96, in forward
+    weight = self.reweight_functions(label)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 124, in reweight_functions
+    weight = self.rebalance_weight(label.float())
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 151, in rebalance_weight
+    repeat_rate = torch.sum( gt_labels.float() * self.freq_inv, dim=1, keepdim=True)
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:55:13 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_mean',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'R-BCE-Focal',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'mean',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:55:13 INFO Loaded vocab and data from file
+12:55:13 INFO Using cuda:2
+12:55:13 INFO # levels: 2
+12:55:13 INFO # labels at level 0: 34
+12:55:13 INFO # labels at level 1: 44
+12:55:13 INFO 5.5.5
+12:55:16 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:55:16 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:55:16 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:55:16 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:55:16 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 96, in forward
+    weight = self.reweight_functions(label)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 124, in reweight_functions
+    weight = self.rebalance_weight(label.float())
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 151, in rebalance_weight
+    repeat_rate = torch.sum( gt_labels.float() * self.freq_inv, dim=1, keepdim=True)
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:55:19 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'R-BCE-Focal',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:55:19 INFO Loaded vocab and data from file
+12:55:19 INFO Using cuda:2
+12:55:19 INFO # levels: 2
+12:55:19 INFO # labels at level 0: 34
+12:55:19 INFO # labels at level 1: 44
+12:55:19 INFO 5.5.5
+12:55:22 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:55:22 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:55:22 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:55:22 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:55:22 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 96, in forward
+    weight = self.reweight_functions(label)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 124, in reweight_functions
+    weight = self.rebalance_weight(label.float())
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 151, in rebalance_weight
+    repeat_rate = torch.sum( gt_labels.float() * self.freq_inv, dim=1, keepdim=True)
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:55:25 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_none',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'NTR-Focal',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'none',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:55:25 INFO Loaded vocab and data from file
+12:55:25 INFO Using cuda:2
+12:55:25 INFO # levels: 2
+12:55:25 INFO # labels at level 0: 34
+12:55:25 INFO # labels at level 1: 44
+12:55:25 INFO 5.5.5
+12:55:28 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:55:28 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:55:28 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:55:28 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:55:28 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 98, in forward
+    cls_score, weight = self.logit_reg_functions(label.float(), cls_score, weight)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 143, in logit_reg_functions
+    logits += self.init_bias
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:55:31 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_mean',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'NTR-Focal',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'mean',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:55:31 INFO Loaded vocab and data from file
+12:55:31 INFO Using cuda:2
+12:55:31 INFO # levels: 2
+12:55:31 INFO # labels at level 0: 34
+12:55:31 INFO # labels at level 1: 44
+12:55:31 INFO 5.5.5
+12:55:33 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:55:33 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:55:33 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:55:33 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:55:33 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 98, in forward
+    cls_score, weight = self.logit_reg_functions(label.float(), cls_score, weight)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 143, in logit_reg_functions
+    logits += self.init_bias
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:55:37 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'NTR-Focal',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:55:37 INFO Loaded vocab and data from file
+12:55:37 INFO Using cuda:2
+12:55:37 INFO # levels: 2
+12:55:37 INFO # labels at level 0: 34
+12:55:37 INFO # labels at level 1: 44
+12:55:37 INFO 5.5.5
+12:55:39 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:55:39 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:55:39 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:55:39 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:55:39 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 98, in forward
+    cls_score, weight = self.logit_reg_functions(label.float(), cls_score, weight)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 143, in logit_reg_functions
+    logits += self.init_bias
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:55:43 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_none',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'DBloss-noFocal',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'none',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:55:43 INFO Loaded vocab and data from file
+12:55:43 INFO Using cuda:2
+12:55:43 INFO # levels: 2
+12:55:43 INFO # labels at level 0: 34
+12:55:43 INFO # labels at level 1: 44
+12:55:43 INFO 5.5.5
+12:55:45 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:55:45 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:55:45 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:55:45 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:55:45 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 96, in forward
+    weight = self.reweight_functions(label)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 124, in reweight_functions
+    weight = self.rebalance_weight(label.float())
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 151, in rebalance_weight
+    repeat_rate = torch.sum( gt_labels.float() * self.freq_inv, dim=1, keepdim=True)
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:55:49 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_mean',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'DBloss-noFocal',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'mean',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:55:49 INFO Loaded vocab and data from file
+12:55:49 INFO Using cuda:2
+12:55:49 INFO # levels: 2
+12:55:49 INFO # labels at level 0: 34
+12:55:49 INFO # labels at level 1: 44
+12:55:49 INFO 5.5.5
+12:55:51 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:55:51 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:55:51 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:55:51 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:55:51 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 96, in forward
+    weight = self.reweight_functions(label)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 124, in reweight_functions
+    weight = self.rebalance_weight(label.float())
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 151, in rebalance_weight
+    repeat_rate = torch.sum( gt_labels.float() * self.freq_inv, dim=1, keepdim=True)
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:55:55 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'DBloss-noFocal',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:55:55 INFO Loaded vocab and data from file
+12:55:55 INFO Using cuda:2
+12:55:55 INFO # levels: 2
+12:55:55 INFO # labels at level 0: 34
+12:55:55 INFO # labels at level 1: 44
+12:55:55 INFO 5.5.5
+12:55:57 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:55:57 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:55:57 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:55:57 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:55:57 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 96, in forward
+    weight = self.reweight_functions(label)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 124, in reweight_functions
+    weight = self.rebalance_weight(label.float())
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 151, in rebalance_weight
+    repeat_rate = torch.sum( gt_labels.float() * self.freq_inv, dim=1, keepdim=True)
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:56:01 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_none',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'CBloss-ntr',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'none',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:56:01 INFO Loaded vocab and data from file
+12:56:01 INFO Using cuda:2
+12:56:01 INFO # levels: 2
+12:56:01 INFO # labels at level 0: 34
+12:56:01 INFO # labels at level 1: 44
+12:56:01 INFO 5.5.5
+12:56:03 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:56:03 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:56:03 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:56:03 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:56:03 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 98, in forward
+    cls_score, weight = self.logit_reg_functions(label.float(), cls_score, weight)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 143, in logit_reg_functions
+    logits += self.init_bias
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:56:07 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_mean',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'CBloss-ntr',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'mean',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:56:07 INFO Loaded vocab and data from file
+12:56:07 INFO Using cuda:2
+12:56:07 INFO # levels: 2
+12:56:07 INFO # labels at level 0: 34
+12:56:07 INFO # labels at level 1: 44
+12:56:07 INFO 5.5.5
+12:56:09 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:56:09 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:56:09 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:56:09 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:56:09 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 98, in forward
+    cls_score, weight = self.logit_reg_functions(label.float(), cls_score, weight)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 143, in logit_reg_functions
+    logits += self.init_bias
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:56:13 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'CBloss-ntr',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:56:13 INFO Loaded vocab and data from file
+12:56:13 INFO Using cuda:2
+12:56:13 INFO # levels: 2
+12:56:13 INFO # labels at level 0: 34
+12:56:13 INFO # labels at level 1: 44
+12:56:13 INFO 5.5.5
+12:56:15 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:56:15 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:56:15 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:56:15 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:56:15 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 98, in forward
+    cls_score, weight = self.logit_reg_functions(label.float(), cls_score, weight)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 143, in logit_reg_functions
+    logits += self.init_bias
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:56:19 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_none',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'DBloss',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'none',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:56:19 INFO Loaded vocab and data from file
+12:56:19 INFO Using cuda:2
+12:56:19 INFO # levels: 2
+12:56:19 INFO # labels at level 0: 34
+12:56:19 INFO # labels at level 1: 44
+12:56:19 INFO 5.5.5
+12:56:21 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:56:21 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:56:21 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:56:21 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:56:21 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 96, in forward
+    weight = self.reweight_functions(label)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 124, in reweight_functions
+    weight = self.rebalance_weight(label.float())
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 151, in rebalance_weight
+    repeat_rate = torch.sum( gt_labels.float() * self.freq_inv, dim=1, keepdim=True)
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:56:25 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_mean',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'DBloss',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'mean',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:56:25 INFO Loaded vocab and data from file
+12:56:25 INFO Using cuda:2
+12:56:25 INFO # levels: 2
+12:56:25 INFO # labels at level 0: 34
+12:56:25 INFO # labels at level 1: 44
+12:56:25 INFO 5.5.5
+12:56:27 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:56:27 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:56:27 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:56:27 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:56:27 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 96, in forward
+    weight = self.reweight_functions(label)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 124, in reweight_functions
+    weight = self.rebalance_weight(label.float())
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 151, in rebalance_weight
+    repeat_rate = torch.sum( gt_labels.float() * self.freq_inv, dim=1, keepdim=True)
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:56:31 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'DBloss',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:56:31 INFO Loaded vocab and data from file
+12:56:31 INFO Using cuda:2
+12:56:31 INFO # levels: 2
+12:56:31 INFO # labels at level 0: 34
+12:56:31 INFO # labels at level 1: 44
+12:56:31 INFO 5.5.5
+12:56:33 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:56:33 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:56:33 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:56:33 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:56:33 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 96, in forward
+    weight = self.reweight_functions(label)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 124, in reweight_functions
+    weight = self.rebalance_weight(label.float())
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 151, in rebalance_weight
+    repeat_rate = torch.sum( gt_labels.float() * self.freq_inv, dim=1, keepdim=True)
+RuntimeError: The size of tensor a (34) must match the size of tensor b (40) at non-singleton dimension 1
+running model12:56:36 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_none',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'base',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'none',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:56:36 INFO Loaded vocab and data from file
+12:56:36 INFO Using cuda:2
+12:56:36 INFO # levels: 2
+12:56:36 INFO # labels at level 0: 34
+12:56:36 INFO # labels at level 1: 44
+12:56:36 INFO 5.5.5
+12:56:39 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:56:39 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:56:39 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:56:39 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:56:39 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.90batches/s]Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.89batches/s]
+Evaluating:   0%|          | 0/1 [00:00<?, ?batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.26batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.25batches/s]12:56:39 INFO Learning rate at epoch #1: 0.001
+12:56:39 INFO Loss on Train at epoch #1: 0.68886, micro_f1 on Valid: 0.225
+12:56:39 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.225
+12:56:39 INFO Results on Valid set at epoch #1 with Averaged Loss 0.66134
+12:56:39 INFO ======== Results at level_0 ========
+12:56:39 INFO Results on Valid set at epoch #1 with Loss 0.67541: 
+[MICRO]	accuracy: 0.14815	auc: 0.58132	precision: 0.24242	recall: 0.27586	f1: 0.25806	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.53333	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.2	P@15: 0.21333
+
+12:56:39 INFO ======== Results at level_1 ========
+12:56:39 INFO Results on Valid set at epoch #1 with Loss 0.64916: 
+[MICRO]	accuracy: 0.12676	auc: 0.53746	precision: 0.18367	recall: 0.29032	f1: 0.225	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04394	auc: 0.43333	precision: 0.04621	recall: 0.15152	f1: 0.07082	P@1: 0.2	P@5: 0.2	P@8: 0.225	P@10: 0.18	P@15: 0.2
+
+12:56:39 INFO =================== BEST ===================
+12:56:39 INFO Results on Valid set at epoch #1 with Averaged Loss 0.66134
+12:56:39 INFO ======== Results at level_0 ========
+12:56:39 INFO Results on Valid set at epoch #1 with Loss 0.67541: 
+[MICRO]	accuracy: 0.14815	auc: 0.58132	precision: 0.24242	recall: 0.27586	f1: 0.25806	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.53333	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.2	P@15: 0.21333
+
+12:56:39 INFO ======== Results at level_1 ========
+12:56:39 INFO Results on Valid set at epoch #1 with Loss 0.64916: 
+[MICRO]	accuracy: 0.12676	auc: 0.53746	precision: 0.18367	recall: 0.29032	f1: 0.225	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04394	auc: 0.43333	precision: 0.04621	recall: 0.15152	f1: 0.07082	P@1: 0.2	P@5: 0.2	P@8: 0.225	P@10: 0.18	P@15: 0.2
+
+
+kill: failed to parse argument: 'N/A'
+kill: failed to parse argument: 'N/A'
+running model12:56:43 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_mean',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'base',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'mean',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:56:43 INFO Loaded vocab and data from file
+12:56:43 INFO Using cuda:2
+12:56:43 INFO # levels: 2
+12:56:43 INFO # labels at level 0: 34
+12:56:43 INFO # labels at level 1: 44
+12:56:43 INFO 5.5.5
+12:56:45 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:56:45 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:56:45 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:56:45 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:56:45 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.94batches/s]Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.94batches/s]
+Evaluating:   0%|          | 0/1 [00:00<?, ?batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  6.94batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  6.93batches/s]12:56:46 INFO Learning rate at epoch #1: 0.001
+12:56:46 INFO Loss on Train at epoch #1: 0.68886, micro_f1 on Valid: 0.225
+12:56:46 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.225
+12:56:46 INFO Results on Valid set at epoch #1 with Averaged Loss 0.66134
+12:56:46 INFO ======== Results at level_0 ========
+12:56:46 INFO Results on Valid set at epoch #1 with Loss 0.67541: 
+[MICRO]	accuracy: 0.14815	auc: 0.58132	precision: 0.24242	recall: 0.27586	f1: 0.25806	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.53333	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.2	P@15: 0.21333
+
+12:56:46 INFO ======== Results at level_1 ========
+12:56:46 INFO Results on Valid set at epoch #1 with Loss 0.64916: 
+[MICRO]	accuracy: 0.12676	auc: 0.53746	precision: 0.18367	recall: 0.29032	f1: 0.225	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04394	auc: 0.43333	precision: 0.04621	recall: 0.15152	f1: 0.07082	P@1: 0.2	P@5: 0.2	P@8: 0.225	P@10: 0.18	P@15: 0.2
+
+12:56:46 INFO =================== BEST ===================
+12:56:46 INFO Results on Valid set at epoch #1 with Averaged Loss 0.66134
+12:56:46 INFO ======== Results at level_0 ========
+12:56:46 INFO Results on Valid set at epoch #1 with Loss 0.67541: 
+[MICRO]	accuracy: 0.14815	auc: 0.58132	precision: 0.24242	recall: 0.27586	f1: 0.25806	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.53333	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.2	P@15: 0.21333
+
+12:56:46 INFO ======== Results at level_1 ========
+12:56:46 INFO Results on Valid set at epoch #1 with Loss 0.64916: 
+[MICRO]	accuracy: 0.12676	auc: 0.53746	precision: 0.18367	recall: 0.29032	f1: 0.225	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04394	auc: 0.43333	precision: 0.04621	recall: 0.15152	f1: 0.07082	P@1: 0.2	P@5: 0.2	P@8: 0.225	P@10: 0.18	P@15: 0.2
+
+
+kill: failed to parse argument: 'N/A'
+kill: failed to parse argument: 'N/A'
+running model12:56:50 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'base',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:56:50 INFO Loaded vocab and data from file
+12:56:50 INFO Using cuda:2
+12:56:50 INFO # levels: 2
+12:56:50 INFO # labels at level 0: 34
+12:56:50 INFO # labels at level 1: 44
+12:56:50 INFO 5.5.5
+12:56:52 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:56:52 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:56:52 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:56:52 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:56:52 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.94batches/s]Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.94batches/s]
+Evaluating:   0%|          | 0/1 [00:00<?, ?batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.17batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.17batches/s]12:56:52 INFO Learning rate at epoch #1: 0.001
+12:56:52 INFO Loss on Train at epoch #1: 0.68886, micro_f1 on Valid: 0.225
+12:56:52 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.225
+12:56:52 INFO Results on Valid set at epoch #1 with Averaged Loss 0.66134
+12:56:52 INFO ======== Results at level_0 ========
+12:56:52 INFO Results on Valid set at epoch #1 with Loss 0.67541: 
+[MICRO]	accuracy: 0.14815	auc: 0.58132	precision: 0.24242	recall: 0.27586	f1: 0.25806	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.53333	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.2	P@15: 0.21333
+
+12:56:52 INFO ======== Results at level_1 ========
+12:56:52 INFO Results on Valid set at epoch #1 with Loss 0.64916: 
+[MICRO]	accuracy: 0.12676	auc: 0.53746	precision: 0.18367	recall: 0.29032	f1: 0.225	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04394	auc: 0.43333	precision: 0.04621	recall: 0.15152	f1: 0.07082	P@1: 0.2	P@5: 0.2	P@8: 0.225	P@10: 0.18	P@15: 0.2
+
+12:56:52 INFO =================== BEST ===================
+12:56:52 INFO Results on Valid set at epoch #1 with Averaged Loss 0.66134
+12:56:52 INFO ======== Results at level_0 ========
+12:56:52 INFO Results on Valid set at epoch #1 with Loss 0.67541: 
+[MICRO]	accuracy: 0.14815	auc: 0.58132	precision: 0.24242	recall: 0.27586	f1: 0.25806	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.53333	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.2	P@15: 0.21333
+
+12:56:52 INFO ======== Results at level_1 ========
+12:56:52 INFO Results on Valid set at epoch #1 with Loss 0.64916: 
+[MICRO]	accuracy: 0.12676	auc: 0.53746	precision: 0.18367	recall: 0.29032	f1: 0.225	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04394	auc: 0.43333	precision: 0.04621	recall: 0.15152	f1: 0.07082	P@1: 0.2	P@5: 0.2	P@8: 0.225	P@10: 0.18	P@15: 0.2
+
+
+kill: failed to parse argument: 'N/A'
+kill: failed to parse argument: 'N/A'
+running model12:56:56 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_none',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FocalLoss11',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'none',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:56:56 INFO Loaded vocab and data from file
+12:56:56 INFO Using cuda:2
+12:56:56 INFO # levels: 2
+12:56:56 INFO # labels at level 0: 34
+12:56:56 INFO # labels at level 1: 44
+12:56:56 INFO 5.5.5
+12:56:58 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:56:58 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:56:58 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:56:58 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:56:58 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 283, in forward
+    return F.binary_cross_entropy_with_logits(y_pred, y_true, weight=sample_weight, pos_weight=self.pos_weight.to(self.device))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/functional.py", line 2829, in binary_cross_entropy_with_logits
+    return torch.binary_cross_entropy_with_logits(input, target, weight, pos_weight, reduction_enum)
+RuntimeError: The size of tensor a (40) must match the size of tensor b (34) at non-singleton dimension 1
+running model12:57:02 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_mean',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FocalLoss11',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'mean',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:57:02 INFO Loaded vocab and data from file
+12:57:02 INFO Using cuda:2
+12:57:02 INFO # levels: 2
+12:57:02 INFO # labels at level 0: 34
+12:57:02 INFO # labels at level 1: 44
+12:57:02 INFO 5.5.5
+12:57:04 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:57:04 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:57:04 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:57:04 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:57:04 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 283, in forward
+    return F.binary_cross_entropy_with_logits(y_pred, y_true, weight=sample_weight, pos_weight=self.pos_weight.to(self.device))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/functional.py", line 2829, in binary_cross_entropy_with_logits
+    return torch.binary_cross_entropy_with_logits(input, target, weight, pos_weight, reduction_enum)
+RuntimeError: The size of tensor a (40) must match the size of tensor b (34) at non-singleton dimension 1
+running model12:57:08 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FocalLoss11',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:57:08 INFO Loaded vocab and data from file
+12:57:08 INFO Using cuda:2
+12:57:08 INFO # levels: 2
+12:57:08 INFO # labels at level 0: 34
+12:57:08 INFO # labels at level 1: 44
+12:57:08 INFO 5.5.5
+12:57:10 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:57:10 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:57:10 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:57:10 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:57:10 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 283, in forward
+    return F.binary_cross_entropy_with_logits(y_pred, y_true, weight=sample_weight, pos_weight=self.pos_weight.to(self.device))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/functional.py", line 2829, in binary_cross_entropy_with_logits
+    return torch.binary_cross_entropy_with_logits(input, target, weight, pos_weight, reduction_enum)
+RuntimeError: The size of tensor a (40) must match the size of tensor b (34) at non-singleton dimension 1
+running model12:57:14 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_none',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FocalLoss22',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'none',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:57:14 INFO Loaded vocab and data from file
+12:57:14 INFO Using cuda:2
+12:57:14 INFO # levels: 2
+12:57:14 INFO # labels at level 0: 34
+12:57:14 INFO # labels at level 1: 44
+12:57:14 INFO 5.5.5
+12:57:16 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:57:16 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:57:16 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:57:16 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:57:16 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.99batches/s]Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.99batches/s]
+Evaluating:   0%|          | 0/1 [00:00<?, ?batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.31batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.30batches/s]12:57:17 INFO Learning rate at epoch #1: 0.001
+12:57:17 INFO Loss on Train at epoch #1: 0.17272, micro_f1 on Valid: 0.21951
+12:57:17 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.21951
+12:57:17 INFO Results on Valid set at epoch #1 with Averaged Loss 0.1588
+12:57:17 INFO ======== Results at level_0 ========
+12:57:17 INFO Results on Valid set at epoch #1 with Loss 0.16443: 
+[MICRO]	accuracy: 0.14545	auc: 0.58547	precision: 0.23529	recall: 0.27586	f1: 0.25397	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.54583	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.2	P@8: 0.2	P@10: 0.2	P@15: 0.22667
+
+12:57:17 INFO ======== Results at level_1 ========
+12:57:17 INFO Results on Valid set at epoch #1 with Loss 0.15391: 
+[MICRO]	accuracy: 0.12329	auc: 0.5349	precision: 0.17647	recall: 0.29032	f1: 0.21951	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04205	auc: 0.44333	precision: 0.04432	recall: 0.15152	f1: 0.06858	P@1: 0.2	P@5: 0.16	P@8: 0.225	P@10: 0.18	P@15: 0.2
+
+12:57:17 INFO =================== BEST ===================
+12:57:17 INFO Results on Valid set at epoch #1 with Averaged Loss 0.1588
+12:57:17 INFO ======== Results at level_0 ========
+12:57:17 INFO Results on Valid set at epoch #1 with Loss 0.16443: 
+[MICRO]	accuracy: 0.14545	auc: 0.58547	precision: 0.23529	recall: 0.27586	f1: 0.25397	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.54583	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.2	P@8: 0.2	P@10: 0.2	P@15: 0.22667
+
+12:57:17 INFO ======== Results at level_1 ========
+12:57:17 INFO Results on Valid set at epoch #1 with Loss 0.15391: 
+[MICRO]	accuracy: 0.12329	auc: 0.5349	precision: 0.17647	recall: 0.29032	f1: 0.21951	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04205	auc: 0.44333	precision: 0.04432	recall: 0.15152	f1: 0.06858	P@1: 0.2	P@5: 0.16	P@8: 0.225	P@10: 0.18	P@15: 0.2
+
+
+kill: failed to parse argument: 'N/A'
+kill: failed to parse argument: 'N/A'
+running model12:57:21 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_mean',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FocalLoss22',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'mean',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:57:21 INFO Loaded vocab and data from file
+12:57:21 INFO Using cuda:2
+12:57:21 INFO # levels: 2
+12:57:21 INFO # labels at level 0: 34
+12:57:21 INFO # labels at level 1: 44
+12:57:21 INFO 5.5.5
+12:57:23 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:57:23 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:57:23 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:57:23 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:57:23 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.92batches/s]Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.92batches/s]
+Evaluating:   0%|          | 0/1 [00:00<?, ?batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.06batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.05batches/s]12:57:23 INFO Learning rate at epoch #1: 0.001
+12:57:23 INFO Loss on Train at epoch #1: 0.17074, micro_f1 on Valid: 0.21687
+12:57:23 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.21687
+12:57:23 INFO Results on Valid set at epoch #1 with Averaged Loss 0.15601
+12:57:23 INFO ======== Results at level_0 ========
+12:57:23 INFO Results on Valid set at epoch #1 with Loss 0.16388: 
+[MICRO]	accuracy: 0.14035	auc: 0.58523	precision: 0.22222	recall: 0.27586	f1: 0.24615	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.54583	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.2	P@8: 0.2	P@10: 0.2	P@15: 0.24
+
+12:57:23 INFO ======== Results at level_1 ========
+12:57:23 INFO Results on Valid set at epoch #1 with Loss 0.14918: 
+[MICRO]	accuracy: 0.12162	auc: 0.5349	precision: 0.17308	recall: 0.29032	f1: 0.21687	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04205	auc: 0.44333	precision: 0.04432	recall: 0.15152	f1: 0.06858	P@1: 0.2	P@5: 0.2	P@8: 0.2	P@10: 0.18	P@15: 0.2
+
+12:57:23 INFO =================== BEST ===================
+12:57:23 INFO Results on Valid set at epoch #1 with Averaged Loss 0.15601
+12:57:23 INFO ======== Results at level_0 ========
+12:57:23 INFO Results on Valid set at epoch #1 with Loss 0.16388: 
+[MICRO]	accuracy: 0.14035	auc: 0.58523	precision: 0.22222	recall: 0.27586	f1: 0.24615	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.05588	auc: 0.54583	precision: 0.07059	recall: 0.13235	f1: 0.09207	P@1: 0.2	P@5: 0.2	P@8: 0.2	P@10: 0.2	P@15: 0.24
+
+12:57:23 INFO ======== Results at level_1 ========
+12:57:23 INFO Results on Valid set at epoch #1 with Loss 0.14918: 
+[MICRO]	accuracy: 0.12162	auc: 0.5349	precision: 0.17308	recall: 0.29032	f1: 0.21687	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04205	auc: 0.44333	precision: 0.04432	recall: 0.15152	f1: 0.06858	P@1: 0.2	P@5: 0.2	P@8: 0.2	P@10: 0.18	P@15: 0.2
+
+
+kill: failed to parse argument: 'N/A'
+kill: failed to parse argument: 'N/A'
+running model12:57:27 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FocalLoss22',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:57:27 INFO Loaded vocab and data from file
+12:57:27 INFO Using cuda:2
+12:57:27 INFO # levels: 2
+12:57:27 INFO # labels at level 0: 34
+12:57:27 INFO # labels at level 1: 44
+12:57:27 INFO 5.5.5
+12:57:29 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:57:29 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:57:29 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:57:29 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:57:29 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.85batches/s]Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.85batches/s]
+Evaluating:   0%|          | 0/1 [00:00<?, ?batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  6.95batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  6.94batches/s]12:57:30 INFO Learning rate at epoch #1: 0.001
+12:57:30 INFO Loss on Train at epoch #1: 135.52603, micro_f1 on Valid: 0.26087
+12:57:30 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.26087
+12:57:30 INFO Results on Valid set at epoch #1 with Averaged Loss 128.18903
+12:57:30 INFO ======== Results at level_0 ========
+12:57:30 INFO Results on Valid set at epoch #1 with Loss 113.8747: 
+[MICRO]	accuracy: 0.13462	auc: 0.56664	precision: 0.23333	recall: 0.24138	f1: 0.23729	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04118	auc: 0.55	precision: 0.04118	recall: 0.11765	f1: 0.061	P@1: 0.2	P@5: 0.28	P@8: 0.2	P@10: 0.2	P@15: 0.18667
+
+12:57:30 INFO ======== Results at level_1 ========
+12:57:30 INFO Results on Valid set at epoch #1 with Loss 140.59477: 
+[MICRO]	accuracy: 0.15	auc: 0.54258	precision: 0.23684	recall: 0.29032	f1: 0.26087	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04318	auc: 0.48	precision: 0.04318	recall: 0.13636	f1: 0.06559	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.2	P@15: 0.2
+
+12:57:30 INFO =================== BEST ===================
+12:57:30 INFO Results on Valid set at epoch #1 with Averaged Loss 128.18903
+12:57:30 INFO ======== Results at level_0 ========
+12:57:30 INFO Results on Valid set at epoch #1 with Loss 113.8747: 
+[MICRO]	accuracy: 0.13462	auc: 0.56664	precision: 0.23333	recall: 0.24138	f1: 0.23729	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04118	auc: 0.55	precision: 0.04118	recall: 0.11765	f1: 0.061	P@1: 0.2	P@5: 0.28	P@8: 0.2	P@10: 0.2	P@15: 0.18667
+
+12:57:30 INFO ======== Results at level_1 ========
+12:57:30 INFO Results on Valid set at epoch #1 with Loss 140.59477: 
+[MICRO]	accuracy: 0.15	auc: 0.54258	precision: 0.23684	recall: 0.29032	f1: 0.26087	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04318	auc: 0.48	precision: 0.04318	recall: 0.13636	f1: 0.06559	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.2	P@15: 0.2
+
+
+kill: failed to parse argument: 'N/A'
+kill: failed to parse argument: 'N/A'
+running model12:57:34 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_none',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FocalLoss44',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'none',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:57:34 INFO Loaded vocab and data from file
+12:57:34 INFO Using cuda:2
+12:57:34 INFO # levels: 2
+12:57:34 INFO # labels at level 0: 34
+12:57:34 INFO # labels at level 1: 44
+12:57:34 INFO 5.5.5
+12:57:36 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:57:36 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:57:36 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:57:36 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:57:36 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                /pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [32,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [34,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [35,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [36,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [38,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [43,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [44,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [46,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [47,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [48,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [49,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [51,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [54,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [57,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [58,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [59,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [60,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [61,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [62,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [0,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [1,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [2,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [4,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [9,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [10,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [12,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [13,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [14,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [15,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [17,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [18,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [20,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [22,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [23,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [24,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [25,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [26,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [28,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [31,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 123, in train_single_epoch
+    true_labels[level].extend(level_labels.cpu().numpy())
+RuntimeError: CUDA error: device-side assert triggered
+running model12:57:38 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_mean',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FocalLoss44',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'mean',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:57:38 INFO Loaded vocab and data from file
+12:57:38 INFO Using cuda:2
+12:57:38 INFO # levels: 2
+12:57:38 INFO # labels at level 0: 34
+12:57:38 INFO # labels at level 1: 44
+12:57:38 INFO 5.5.5
+12:57:40 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:57:40 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:57:40 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:57:40 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:57:40 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                /pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [32,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [34,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [35,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [36,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [38,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [43,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [44,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [46,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [47,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [48,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [49,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [51,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [54,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [57,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [58,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [59,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [60,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [61,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [62,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [0,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [1,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [2,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [4,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [9,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [10,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [12,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [13,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [14,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [15,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [17,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [18,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [20,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [22,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [23,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [24,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [25,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [26,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [28,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [31,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 123, in train_single_epoch
+    true_labels[level].extend(level_labels.cpu().numpy())
+RuntimeError: CUDA error: device-side assert triggered
+running model12:57:42 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FocalLoss44',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:57:42 INFO Loaded vocab and data from file
+12:57:42 INFO Using cuda:2
+12:57:42 INFO # levels: 2
+12:57:42 INFO # labels at level 0: 34
+12:57:42 INFO # labels at level 1: 44
+12:57:42 INFO 5.5.5
+12:57:44 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:57:44 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:57:44 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:57:44 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:57:44 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                /pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [32,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [34,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [35,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [36,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [38,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [43,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [44,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [46,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [47,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [48,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [49,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [51,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [54,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [57,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [58,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [59,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [60,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [61,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [62,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [0,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [1,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [2,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [4,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [9,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [10,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [12,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [13,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [14,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [15,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [17,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [18,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [20,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [22,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [23,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [24,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [25,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [26,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [28,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+/pytorch/aten/src/ATen/native/cuda/Loss.cu:102: operator(): block: [0,0,0], thread: [31,0,0] Assertion `input_val >= zero && input_val <= one` failed.
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 123, in train_single_epoch
+    true_labels[level].extend(level_labels.cpu().numpy())
+RuntimeError: CUDA error: device-side assert triggered
+running model12:57:46 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_none',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FocalLoss33',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'none',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:57:46 INFO Loaded vocab and data from file
+12:57:46 INFO Using cuda:2
+12:57:46 INFO # levels: 2
+12:57:46 INFO # labels at level 0: 34
+12:57:46 INFO # labels at level 1: 44
+12:57:46 INFO 5.5.5
+12:57:48 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:57:48 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:57:48 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:57:48 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:57:48 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 128, in train_single_epoch
+    all_loss_list.append([loss_list[level].item()])
+ValueError: only one element tensors can be converted to Python scalars
+running model12:57:52 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_mean',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FocalLoss33',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'mean',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:57:52 INFO Loaded vocab and data from file
+12:57:52 INFO Using cuda:2
+12:57:52 INFO # levels: 2
+12:57:52 INFO # labels at level 0: 34
+12:57:52 INFO # labels at level 1: 44
+12:57:52 INFO 5.5.5
+12:57:54 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:57:54 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:57:54 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:57:54 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:57:54 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.87batches/s]Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.87batches/s]
+Evaluating:   0%|          | 0/1 [00:00<?, ?batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.45batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.44batches/s]12:57:54 INFO Learning rate at epoch #1: 0.001
+12:57:54 INFO Loss on Train at epoch #1: 6.80213, micro_f1 on Valid: 0.28571
+12:57:54 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.28571
+12:57:54 INFO Results on Valid set at epoch #1 with Averaged Loss 6.05523
+12:57:54 INFO ======== Results at level_0 ========
+12:57:54 INFO Results on Valid set at epoch #1 with Loss 5.48264: 
+[MICRO]	accuracy: 0.13462	auc: 0.57202	precision: 0.23333	recall: 0.24138	f1: 0.23729	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04118	auc: 0.55	precision: 0.04118	recall: 0.11765	f1: 0.061	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.22	P@15: 0.18667
+
+12:57:54 INFO ======== Results at level_1 ========
+12:57:54 INFO Results on Valid set at epoch #1 with Loss 6.55147: 
+[MICRO]	accuracy: 0.16667	auc: 0.5431	precision: 0.25641	recall: 0.32258	f1: 0.28571	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04773	auc: 0.47	precision: 0.04773	recall: 0.15909	f1: 0.07343	P@1: 0.2	P@5: 0.24	P@8: 0.25	P@10: 0.2	P@15: 0.2
+
+12:57:54 INFO =================== BEST ===================
+12:57:54 INFO Results on Valid set at epoch #1 with Averaged Loss 6.05523
+12:57:54 INFO ======== Results at level_0 ========
+12:57:54 INFO Results on Valid set at epoch #1 with Loss 5.48264: 
+[MICRO]	accuracy: 0.13462	auc: 0.57202	precision: 0.23333	recall: 0.24138	f1: 0.23729	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04118	auc: 0.55	precision: 0.04118	recall: 0.11765	f1: 0.061	P@1: 0.2	P@5: 0.24	P@8: 0.225	P@10: 0.22	P@15: 0.18667
+
+12:57:54 INFO ======== Results at level_1 ========
+12:57:54 INFO Results on Valid set at epoch #1 with Loss 6.55147: 
+[MICRO]	accuracy: 0.16667	auc: 0.5431	precision: 0.25641	recall: 0.32258	f1: 0.28571	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.04773	auc: 0.47	precision: 0.04773	recall: 0.15909	f1: 0.07343	P@1: 0.2	P@5: 0.24	P@8: 0.25	P@10: 0.2	P@15: 0.2
+
+
+kill: failed to parse argument: 'N/A'
+kill: failed to parse argument: 'N/A'
+running model12:57:58 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'FocalLoss33',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:57:58 INFO Loaded vocab and data from file
+12:57:58 INFO Using cuda:2
+12:57:58 INFO # levels: 2
+12:57:58 INFO # labels at level 0: 34
+12:57:58 INFO # labels at level 1: 44
+12:57:58 INFO 5.5.5
+12:58:00 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:58:00 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:58:00 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:58:00 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:58:00 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 128, in train_single_epoch
+    all_loss_list.append([loss_list[level].item()])
+ValueError: only one element tensors can be converted to Python scalars
+running model12:58:04 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_none',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'DICE_LOSS11',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'none',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:58:04 INFO Loaded vocab and data from file
+12:58:04 INFO Using cuda:2
+12:58:04 INFO # levels: 2
+12:58:04 INFO # labels at level 0: 34
+12:58:04 INFO # labels at level 1: 44
+12:58:04 INFO 5.5.5
+12:58:06 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:58:06 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:58:06 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:58:06 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:58:06 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 128, in train_single_epoch
+    all_loss_list.append([loss_list[level].item()])
+ValueError: only one element tensors can be converted to Python scalars
+running model12:58:10 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_mean',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'DICE_LOSS11',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'mean',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:58:10 INFO Loaded vocab and data from file
+12:58:10 INFO Using cuda:2
+12:58:10 INFO # levels: 2
+12:58:10 INFO # labels at level 0: 34
+12:58:10 INFO # labels at level 1: 44
+12:58:10 INFO 5.5.5
+12:58:12 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:58:12 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:58:12 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:58:12 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:58:12 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 38, in <module>
+    main()
+  File "/home/admin/Monk/project_laat/LAAT/src/run.py", line 34, in main
+    checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 205, in run_with_validation
+    saved_data_file_path=saved_data_file_path, checkpoint_path=checkpoint_path, fol_name = fol_name)
+  File "/home/admin/Monk/project_laat/LAAT/src/training.py", line 170, in _train_model
+    best_model, scores = trainer.train(n_epoch=args.n_epoch, patience=args.patience)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 219, in train
+    train_scores = self.train_single_epoch(e)
+  File "/home/admin/Monk/project_laat/LAAT/src/trainer.py", line 124, in train_single_epoch
+    loss_list.append(self.criterions[level](output[level], level_labels))
+  File "/home/admin/Monk/gc/lib/python3.6/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/admin/Monk/project_laat/LAAT/src/losses.py", line 390, in forward
+    return 1 - ((2. * intersection + smooth) /
+TypeError: unsupported operand type(s) for *: 'float' and 'builtin_function_or_method'
+running model12:58:16 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'gcn_single_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'DICE_LOSS11',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 1,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+12:58:16 INFO Loaded vocab and data from file
+12:58:16 INFO Using cuda:2
+12:58:16 INFO # levels: 2
+12:58:16 INFO # labels at level 0: 34
+12:58:16 INFO # labels at level 1: 44
+12:58:16 INFO 5.5.5
+12:58:18 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+12:58:18 INFO 5 instances with 19926 tokens, Level_0 with 26 labels, Level_1 with 30 labels in the train dataset
+12:58:18 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the valid dataset
+12:58:18 INFO 5 instances with 20000 tokens, Level_0 with 20 labels, Level_1 with 25 labels in the test dataset
+12:58:18 INFO Training epoch #1
+Training at epoch #1:   0%|          | 0/1 [00:00<?, ?batches/s]                                                                Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.95batches/s]Training at epoch #1: 100%|██████████| 1/1 [00:00<00:00,  2.95batches/s]
+Evaluating:   0%|          | 0/1 [00:00<?, ?batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.24batches/s]Evaluating: 100%|██████████| 1/1 [00:00<00:00,  7.23batches/s]12:58:19 INFO Learning rate at epoch #1: 0.001
+12:58:19 INFO Loss on Train at epoch #1: 0.68783, micro_f1 on Valid: 0.23377
+12:58:19 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.23377
+12:58:19 INFO Results on Valid set at epoch #1 with Averaged Loss 0.75777
+12:58:19 INFO ======== Results at level_0 ========
+12:58:19 INFO Results on Valid set at epoch #1 with Loss 0.73772: 
+[MICRO]	accuracy: 0.15556	auc: 0.5867	precision: 0.18667	recall: 0.48276	f1: 0.26923	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.11471	auc: 0.48333	precision: 0.11471	recall: 0.26471	f1: 0.16005	P@1: 0.4	P@5: 0.24	P@8: 0.2	P@10: 0.22	P@15: 0.2
+
+12:58:19 INFO ======== Results at level_1 ========
+12:58:19 INFO Results on Valid set at epoch #1 with Loss 0.77515: 
+[MICRO]	accuracy: 0.13235	auc: 0.51084	precision: 0.14634	recall: 0.58065	f1: 0.23377	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.08864	auc: 0.45667	precision: 0.08864	recall: 0.31818	f1: 0.13865	P@1: 0.2	P@5: 0.16	P@8: 0.175	P@10: 0.2	P@15: 0.17333
+
+12:58:19 INFO =================== BEST ===================
+12:58:19 INFO Results on Valid set at epoch #1 with Averaged Loss 0.75777
+12:58:19 INFO ======== Results at level_0 ========
+12:58:19 INFO Results on Valid set at epoch #1 with Loss 0.73772: 
+[MICRO]	accuracy: 0.15556	auc: 0.5867	precision: 0.18667	recall: 0.48276	f1: 0.26923	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.11471	auc: 0.48333	precision: 0.11471	recall: 0.26471	f1: 0.16005	P@1: 0.4	P@5: 0.24	P@8: 0.2	P@10: 0.22	P@15: 0.2
+
+12:58:19 INFO ======== Results at level_1 ========
+12:58:19 INFO Results on Valid set at epoch #1 with Loss 0.77515: 
+[MICRO]	accuracy: 0.13235	auc: 0.51084	precision: 0.14634	recall: 0.58065	f1: 0.23377	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.08864	auc: 0.45667	precision: 0.08864	recall: 0.31818	f1: 0.13865	P@1: 0.2	P@5: 0.16	P@8: 0.175	P@10: 0.2	P@15: 0.17333
+
+
+kill: failed to parse argument: 'N/A'
+kill: failed to parse argument: 'N/A'
