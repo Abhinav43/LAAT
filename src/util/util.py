@@ -297,7 +297,8 @@ def save_acc(file_path, micro, macro, level, args):
     comb['level'] = level
     new_df = pd.concat((df, comb), 0).reset_index(drop=True)
     new_df.to_csv(f'{file_path}/result.csv', index=False)
-
+    
+    del args.model
     if not os.path.exists(f'{file_path}/hyperparameters.txt'):
         with open(f'{file_path}/hyperparameters.txt', "w") as f:
             f.write(pprint.pformat(args.__dict__, indent=4))

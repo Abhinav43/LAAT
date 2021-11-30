@@ -1,10 +1,10 @@
 #!/bin/bash
 exec 3>&1 4>&2
 trap 'exec 2>&4 1>&3' 0 1 2 3
-exec 1>bulk_run_1.out 2>&1
+exec 1>bulk_run_2.out 2>&1
 
 
-for domain in BCE FL CBloss R-BCE-Focal NTR-Focal DBloss-noFocal CBloss-ntr DBloss base FocalLoss11 FocalLoss22 FocalLoss44 FocalLoss33 DICE_LOSS11
+for domain in FocalLoss55 FocalLoss66 FocalLossMultiLabel1111 DiceLoss BinaryDiceLoss DiceLoss12 FocalLossV1 FocalLossV2 BPMLLLoss SoftDiceLossV2 SoftDiceLossV1 Dual_Focal_loss AsymmetricLoss AsymmetricLossOptimized
 do
     for col_opss in none mean sum
     do

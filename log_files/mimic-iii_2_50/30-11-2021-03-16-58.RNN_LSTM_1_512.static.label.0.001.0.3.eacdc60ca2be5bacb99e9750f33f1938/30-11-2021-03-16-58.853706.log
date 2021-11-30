@@ -1,0 +1,163 @@
+03:16:58 INFO Training with 
+{   'attention_mode': 'label',
+    'batch_size': 8,
+    'best_model_path': None,
+    'bidirectional': 1,
+    'd_a': 512,
+    'dropout': 0.3,
+    'embedding_file': 'data/embeddings/word2vec_sg0_100.model',
+    'embedding_mode': 'word2vec',
+    'embedding_size': 100,
+    'exp_name': 'experiment_sum',
+    'hidden_size': 512,
+    'joint_mode': 'hierarchical',
+    'level_projection_size': 128,
+    'loss_name': 'BCE',
+    'lr': 0.001,
+    'lr_scheduler_factor': 0.9,
+    'lr_scheduler_patience': 5,
+    'main_metric': 'micro_f1',
+    'max_seq_length': 4000,
+    'metric_level': 1,
+    'min_seq_length': -1,
+    'min_word_frequency': -1,
+    'mode': 'static',
+    'model': <class 'src.models.rnn.RNN'>,
+    'multilabel': 1,
+    'n_epoch': 50,
+    'n_layers': 1,
+    'optimiser': 'adamw',
+    'patience': 5,
+    'penalisation_coeff': 0.01,
+    'problem_name': 'mimic-iii_2_50',
+    'r': -1,
+    'reduction': 'sum',
+    'resume_training': False,
+    'rnn_model': 'LSTM',
+    'save_best_model': 1,
+    'save_results': 1,
+    'save_results_on_train': False,
+    'shuffle_data': 1,
+    'use_last_hidden_state': 0,
+    'use_lr_scheduler': 1,
+    'use_regularisation': False,
+    'weight_decay': 0}
+
+03:16:59 INFO Loaded vocab and data from file
+03:16:59 INFO Using cuda:2
+03:16:59 INFO # levels: 2
+03:16:59 INFO # labels at level 0: 40
+03:16:59 INFO # labels at level 1: 50
+03:16:59 INFO 8066.1573.1729
+03:17:01 INFO Saved dataset path: cached_data/mimic-iii_2_50/797d28c2de5595caf911a3ed71f510b1.data.pkl
+03:17:02 INFO 8066 instances with 12243046 tokens, Level_0 with 40 labels, Level_1 with 50 labels in the train dataset
+03:17:02 INFO 1729 instances with 3140441 tokens, Level_0 with 40 labels, Level_1 with 50 labels in the valid dataset
+03:17:02 INFO 1729 instances with 3140441 tokens, Level_0 with 40 labels, Level_1 with 50 labels in the test dataset
+03:17:02 INFO Training epoch #1
+03:24:44 INFO Learning rate at epoch #1: 0.001
+03:24:44 INFO Loss on Train at epoch #1: 0.24761, micro_f1 on Valid: 0.64208
+03:24:44 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.64208
+03:24:44 INFO Results on Valid set at epoch #1 with Averaged Loss 0.20684
+03:24:44 INFO ======== Results at level_0 ========
+03:24:44 INFO Results on Valid set at epoch #1 with Loss 0.21261: 
+[MICRO]	accuracy: 0.50962	auc: 0.92862	precision: 0.76206	recall: 0.60605	f1: 0.67516	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.41724	auc: 0.90153	precision: 0.66655	recall: 0.5119	f1: 0.57907	P@1: 0.86582	P@5: 0.64847	P@8: 0.52552	P@10: 0.45905	P@15: 0.3432
+
+03:24:44 INFO ======== Results at level_1 ========
+03:24:44 INFO Results on Valid set at epoch #1 with Loss 0.20223: 
+[MICRO]	accuracy: 0.47285	auc: 0.92274	precision: 0.71984	recall: 0.57949	f1: 0.64208	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.40017	auc: 0.89767	precision: 0.62437	recall: 0.50086	f1: 0.55584	P@1: 0.82418	P@5: 0.62279	P@8: 0.50983	P@10: 0.44974	P@15: 0.34351
+
+03:24:44 INFO Training epoch #2
+03:32:15 INFO Learning rate at epoch #2: 0.001
+03:32:15 INFO Loss on Train at epoch #2: 0.18995, micro_f1 on Valid: 0.69716
+03:32:15 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.69716
+03:32:15 INFO Results on Valid set at epoch #2 with Averaged Loss 0.19721
+03:32:15 INFO ======== Results at level_0 ========
+03:32:15 INFO Results on Valid set at epoch #2 with Loss 0.20272: 
+[MICRO]	accuracy: 0.5748	auc: 0.93757	precision: 0.74609	recall: 0.71459	f1: 0.73	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.51296	auc: 0.90973	precision: 0.68461	recall: 0.64787	f1: 0.66574	P@1: 0.88317	P@5: 0.66281	P@8: 0.53875	P@10: 0.46958	P@15: 0.34702
+
+03:32:15 INFO ======== Results at level_1 ========
+03:32:15 INFO Results on Valid set at epoch #2 with Loss 0.19281: 
+[MICRO]	accuracy: 0.53511	auc: 0.931	precision: 0.7174	recall: 0.67803	f1: 0.69716	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.47764	auc: 0.90661	precision: 0.64622	recall: 0.6139	f1: 0.62965	P@1: 0.85714	P@5: 0.64615	P@8: 0.52632	P@10: 0.46044	P@15: 0.34752
+
+03:32:15 INFO Training epoch #3
+03:39:42 INFO Learning rate at epoch #3: 0.001
+03:39:42 INFO Loss on Train at epoch #3: 0.1793, micro_f1 on Valid: 0.68789
+03:39:42 INFO [CURRENT BEST] (level_1) micro_f1 on Valid set: 0.69716
+03:39:42 INFO Early stopping: 1/6
+03:39:42 INFO Training epoch #4
+03:47:17 INFO Learning rate at epoch #4: 0.001
+03:47:17 INFO Loss on Train at epoch #4: 0.1709, micro_f1 on Valid: 0.70522
+03:47:17 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.70522
+03:47:17 INFO Results on Valid set at epoch #4 with Averaged Loss 0.18831
+03:47:17 INFO ======== Results at level_0 ========
+03:47:17 INFO Results on Valid set at epoch #4 with Loss 0.19345: 
+[MICRO]	accuracy: 0.58366	auc: 0.94474	precision: 0.762	recall: 0.71378	f1: 0.7371	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.52893	auc: 0.91922	precision: 0.68946	recall: 0.65948	f1: 0.67414	P@1: 0.88953	P@5: 0.6775	P@8: 0.54649	P@10: 0.47611	P@15: 0.35273
+
+03:47:17 INFO ======== Results at level_1 ========
+03:47:17 INFO Results on Valid set at epoch #4 with Loss 0.18421: 
+[MICRO]	accuracy: 0.54466	auc: 0.9391	precision: 0.72805	recall: 0.68378	f1: 0.70522	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.49841	auc: 0.91612	precision: 0.67014	recall: 0.63928	f1: 0.65435	P@1: 0.86582	P@5: 0.65922	P@8: 0.53383	P@10: 0.46992	P@15: 0.35338
+
+03:47:17 INFO Training epoch #5
+03:54:53 INFO Learning rate at epoch #5: 0.001
+03:54:53 INFO Loss on Train at epoch #5: 0.16418, micro_f1 on Valid: 0.71316
+03:54:53 INFO [NEW BEST] (level_1) micro_f1 on Valid set: 0.71316
+03:54:53 INFO Results on Valid set at epoch #5 with Averaged Loss 0.18749
+03:54:53 INFO ======== Results at level_0 ========
+03:54:53 INFO Results on Valid set at epoch #5 with Loss 0.19337: 
+[MICRO]	accuracy: 0.58334	auc: 0.94589	precision: 0.76284	recall: 0.71256	f1: 0.73685	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.52408	auc: 0.92155	precision: 0.69916	recall: 0.6453	f1: 0.67115	P@1: 0.89069	P@5: 0.67577	P@8: 0.54815	P@10: 0.47796	P@15: 0.35315
+
+03:54:53 INFO ======== Results at level_1 ========
+03:54:53 INFO Results on Valid set at epoch #5 with Loss 0.18278: 
+[MICRO]	accuracy: 0.5542	auc: 0.94167	precision: 0.73147	recall: 0.69575	f1: 0.71316	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.50446	auc: 0.91835	precision: 0.67912	recall: 0.63486	f1: 0.65624	P@1: 0.86871	P@5: 0.66339	P@8: 0.53984	P@10: 0.47374	P@15: 0.35566
+
+03:54:53 INFO Training epoch #6
+04:02:29 INFO Learning rate at epoch #6: 0.001
+04:02:29 INFO Loss on Train at epoch #6: 0.15882, micro_f1 on Valid: 0.70612
+04:02:29 INFO [CURRENT BEST] (level_1) micro_f1 on Valid set: 0.71316
+04:02:29 INFO Early stopping: 1/6
+04:02:29 INFO Training epoch #7
+04:10:07 INFO Learning rate at epoch #7: 0.001
+04:10:07 INFO Loss on Train at epoch #7: 0.15316, micro_f1 on Valid: 0.70356
+04:10:07 INFO [CURRENT BEST] (level_1) micro_f1 on Valid set: 0.71316
+04:10:07 INFO Early stopping: 2/6
+04:10:07 INFO Training epoch #8
+04:17:44 INFO Learning rate at epoch #8: 0.001
+04:17:44 INFO Loss on Train at epoch #8: 0.14883, micro_f1 on Valid: 0.70653
+04:17:44 INFO [CURRENT BEST] (level_1) micro_f1 on Valid set: 0.71316
+04:17:44 INFO Early stopping: 3/6
+04:17:44 INFO Training epoch #9
+04:25:15 INFO Learning rate at epoch #9: 0.001
+04:25:15 INFO Loss on Train at epoch #9: 0.14438, micro_f1 on Valid: 0.69528
+04:25:15 INFO [CURRENT BEST] (level_1) micro_f1 on Valid set: 0.71316
+04:25:15 INFO Early stopping: 4/6
+04:25:15 INFO Training epoch #10
+04:32:53 INFO Learning rate at epoch #10: 0.001
+04:32:53 INFO Loss on Train at epoch #10: 0.14179, micro_f1 on Valid: 0.69191
+04:32:53 INFO [CURRENT BEST] (level_1) micro_f1 on Valid set: 0.71316
+04:32:53 INFO Early stopping: 5/6
+04:32:53 INFO Training epoch #11
+04:40:27 INFO Learning rate at epoch #11: 0.0009000000000000001
+04:40:27 INFO Loss on Train at epoch #11: 0.13695, micro_f1 on Valid: 0.70219
+04:40:27 INFO [CURRENT BEST] (level_1) micro_f1 on Valid set: 0.71316
+04:40:27 INFO Early stopping: 6/6
+04:40:27 WARNING Early stopped on Valid set!
+04:40:27 INFO =================== BEST ===================
+04:40:27 INFO Results on Valid set at epoch #5 with Averaged Loss 0.18749
+04:40:27 INFO ======== Results at level_0 ========
+04:40:27 INFO Results on Valid set at epoch #5 with Loss 0.19337: 
+[MICRO]	accuracy: 0.58334	auc: 0.94589	precision: 0.76284	recall: 0.71256	f1: 0.73685	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.52408	auc: 0.92155	precision: 0.69916	recall: 0.6453	f1: 0.67115	P@1: 0.89069	P@5: 0.67577	P@8: 0.54815	P@10: 0.47796	P@15: 0.35315
+
+04:40:27 INFO ======== Results at level_1 ========
+04:40:27 INFO Results on Valid set at epoch #5 with Loss 0.18278: 
+[MICRO]	accuracy: 0.5542	auc: 0.94167	precision: 0.73147	recall: 0.69575	f1: 0.71316	P@1: 0	P@5: 0	P@8: 0	P@10: 0	P@15: 0
+[MACRO]	accuracy: 0.50446	auc: 0.91835	precision: 0.67912	recall: 0.63486	f1: 0.65624	P@1: 0.86871	P@5: 0.66339	P@8: 0.53984	P@10: 0.47374	P@15: 0.35566
+
