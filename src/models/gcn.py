@@ -185,10 +185,41 @@ class GCN(torch.nn.Module):
         return x
     
     
-def layer_ops(x, gcn_layer, gcn_data, lavel, linear_layer, con_dim, trans = True, att = False):
+def layer_ops(x, gcn_layer, gcn_data, lavel, linear_layer, con_dim, trans = True):
     
     x_gcn              = gcn_layer[lavel](gcn_data[lavel])
     weights            = torch.cat((linear_layer[lavel].weight, x_gcn), dim = con_dim)
+    if trans:
+        weights            = weights.t()
+        weights            = weights.expand(x.size()[0],  weights.size()[0], weights.size()[1])
+
+    return weights
+
+
+def res(data, desired_tensor, device):
+    target   = torch.zeros(data.size()[0], desired_tensor.size()[-1]).to(device)
+    target[:, :data.size()[-1]] = data
+    return target
+
+
+def layer_ops_sum(x, gcn_layer, gcn_data, lavel, linear_layer, device, con_dim, trans = True):
+    
+    
+    if trans:
+        x_gcn              = gcn_layer[lavel](gcn_data[lavel]).t()
+        li_data            = linear_layer[lavel].weight.t()
+    else:
+        x_gcn              = gcn_layer[lavel](gcn_data[lavel])
+        li_data            = linear_layer[lavel].weight
+         
+    if x_gcn.size() != li_data.size():
+        if x_gcn.size()[-1] < li_data.size()[-1]:
+            x_gcn   = res(x_gcn, li_data, device)
+            
+        else:
+            li_data = res(li_data, x_gcn, device)
+    
+    weights            = x_gcn + li_data    
     if trans:
         weights            = weights.t()
         weights            = weights.expand(x.size()[0],  weights.size()[0], weights.size()[1])
