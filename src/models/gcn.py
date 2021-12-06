@@ -287,5 +287,35 @@ def before_sum_bottom(weighted_output, gc_l, gc_data, level, mode):
 
     return weighted_output
 
+                
+def after_sum_bottom(weighted_output, gc_l, gc_data, level, mode, liner = None):
+
+    gcn_weights         = gc_l[level](gc_data[level]).t()
+    if liner:
+        liner           = liner[level]
+    
+    if mode    == 'cat':
+        weighted_output_ope = torch.cat((weighted_output, gcn_weights), dim = 1)
+        
+        if liner:
+            weighted_output_ope  = liner(weighted_output_ope)
+
+    elif mode  == 'sum':
+        weighted_output_ope = weighted_output + gcn_weights
+    elif mode  == 'catsum':
+        weighted_output_ope1 = torch.cat((weighted_output, gcn_weights), dim = 1)
+        weighted_output_ope2 = weighted_output + gcn_weights
+        weighted_output_ope  = torch.cat((weighted_output_ope1, weighted_output_ope2), dim = 1)
+
+        
+        if liner:
+            weighted_output_ope  = liner(weighted_output_ope)
+    else:
+        weighted_output_ope  = weighted_output
+    
+    
+    
+    return weighted_output
+
 # mm = get_gcn_data_train(50, 'occ_t', 'dim_300_10_full_raw_50_w2v_sum_w2v_no_tfidf', 'cpu', './')
 # yu = GCN(dropout = False, att = False)
