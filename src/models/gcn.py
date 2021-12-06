@@ -262,5 +262,30 @@ def transformation(tensor_a, tensor_b, pad = False):
     final          = torch.cat((sum_tensor, concat_tensor), concat_dim)  
     return final
 
+
+                
+                
+def before_sum_bottom(weighted_output, gc_l, gc_data, level, mode):
+
+    gcn_weights         = gc_l[level](gc_data[level])
+    gcn_weights         = gcn_weights.expand(weighted_output.size()[0],  
+                                         gcn_weights.size()[0], 
+                                         gcn_weights.size()[1])
+
+    if mode    == 'cat':
+        weighted_output_ope = torch.cat((weighted_output, gcn_weights), dim = 2)
+    elif mode  == 'sum':
+        weighted_output_ope = weighted_output + gcn_weights
+    elif mode  == 'catsum':
+        weighted_output_ope1 = torch.cat((weighted_output, gcn_weights), dim = 2)
+        weighted_output_ope2 = weighted_output + gcn_weights
+        weighted_output_ope  = torch.cat((weighted_output_ope1, weighted_output_ope2), dim = 2)
+    else:
+        weighted_output_ope  = weighted_output
+
+    weighted_output     = weighted_output_ope.sum(dim=2)
+
+    return weighted_output
+
 # mm = get_gcn_data_train(50, 'occ_t', 'dim_300_10_full_raw_50_w2v_sum_w2v_no_tfidf', 'cpu', './')
 # yu = GCN(dropout = False, att = False)
