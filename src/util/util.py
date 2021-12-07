@@ -9,6 +9,7 @@ import pickle as pk
 import pprint
 import json
 import os
+import copy
 
 # This is for shuffling the data and initialise the "UNKNOWN" word embedding
 random.seed(0)
@@ -298,7 +299,12 @@ def save_acc(file_path, micro, macro, level, args):
     new_df = pd.concat((df, comb), 0).reset_index(drop=True)
     new_df.to_csv(f'{file_path}/result.csv', index=False)
     
-    del args.model
+    try:
+        hy_args = copy.deepcopy(args)
+        del hy_args.model
+    except Exception as e:
+        hy_args = copy.deepcopy(args)
+    
     if not os.path.exists(f'{file_path}/hyperparameters.txt'):
         with open(f'{file_path}/hyperparameters.txt', "w") as f:
             f.write(pprint.pformat(args.__dict__, indent=4))
