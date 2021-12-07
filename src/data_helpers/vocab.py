@@ -12,7 +12,7 @@ import numpy as np
 from gensim.models.fasttext import FastText
 from gensim.models.word2vec import Word2Vec
 from gensim.models.keyedvectors import KeyedVectors
-device = torch.device(f'cuda:2' if torch.cuda.is_available() else 'cpu')
+device = torch.device(f'cuda:0' if torch.cuda.is_available() else 'cpu')
 
 class Vocab(object):
     def __init__(self,
