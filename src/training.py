@@ -153,7 +153,7 @@ def _train_model(train_data, valid_data, test_data,
                                                           patience=args.lr_scheduler_patience,
                                                           min_lr=0.0001)
         
-    criterions = [get_l(args.loss_name, len(train_dataset), level_name, args.problem_name, device, args) for level_name in range(vocab.n_level())]
+    criterions = [nn.BCEWithLogitsLoss() for _ in range(vocab.n_level())]
 
     trainer = Trainer(model=model,
                       train_dataloader=train_dataloader,
