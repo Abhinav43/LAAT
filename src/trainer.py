@@ -105,15 +105,15 @@ class Trainer:
 
         for text_batch, label_batch, length_batch, id_batch in progress_bar:
             batch_id += 1
-            text_batch = text_batch.to(device)
+            text_batch = text_batch.to(self.args.gpu_id)
             for idx in range(len(label_batch)):
-                label_batch[idx] = label_batch[idx].to(device)
+                label_batch[idx] = label_batch[idx].to(self.args.gpu_id)
 
             if type(length_batch) == list:
                 for i in range(len(length_batch)):
-                    length_batch[i] = length_batch[i].to(device)
+                    length_batch[i] = length_batch[i].to(self.args.gpu_id)
             else:
-                length_batch = length_batch.to(device)
+                length_batch = length_batch.to(self.args.gpu_id)
 
             output, attn_weights = self.model(text_batch, length_batch)
             loss_list = []
