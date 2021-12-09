@@ -1,11 +1,11 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from src.data_helpers.vocab import device
 from src.models.gcn import *
 
 adj_type   = 'occ_tboth'
 emd_type   = 'dim_300_10_half_raw_50_w2v_avg_w2v_no_tfidf'
+
 
 
 
@@ -38,6 +38,7 @@ class AttentionLayer(nn.Module):
         super(AttentionLayer, self).__init__()
         self.attention_mode = args.attention_mode
         self.args = args
+        device              = self.args.gpu_id
         
         self.size = size
         # For self-attention: d_a and r are the dimension of the dense layer and the number of attention-hops
