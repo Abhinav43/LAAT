@@ -31,7 +31,7 @@ def init_attention_layer(model):
         model.r = model.attention.r
 
 
-def perform_attention(model, all_output, last_output):
+def perform_attention(model, all_output, last_output=None):
     attention_weights = None
     if model.args.joint_mode == "flat":
         if model.attention_mode is not None:
