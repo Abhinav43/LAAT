@@ -150,7 +150,7 @@ class AttentionLayer(nn.Module):
                                     self.gcn_1_layer, 
                                     self.gcn_1_data, 
                                     label_level, 
-                                    'catsum')
+                                    self.args.before_matmul_mode)
         else:
             weighted_output = torch.sum(weighted_output, 1) / self.r[label_level]
             if previous_level_projection is not None:
