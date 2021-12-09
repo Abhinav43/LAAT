@@ -12,7 +12,6 @@ import pickle
 import pprint
 
 from transformers import AdamW
-from src.data_helpers.vocab import device
 from src.losses import get_l
 
 def _load_and_cache_data(train_data, valid_data, test_data, vocab, args, logger, saved_data_file_path):
@@ -99,7 +98,7 @@ def _train_model(train_data, valid_data, test_data,
     model = args.model(vocab, args)
     if init_state_dict is not None:
         model.load_state_dict(init_state_dict)
-    model.to(vocab.device)
+    model.to(args.gpu_id)
 
     train_dataset, valid_dataset, test_dataset = _load_and_cache_data(train_data, valid_data, test_data,
                                                                       vocab, args, logger, saved_data_file_path)
@@ -287,7 +286,7 @@ def prepare_data():
 
     cache_folder = "{}/{}".format(configuration["cache_dir"], problem_name)
     create_folder_if_not_exist(cache_folder)
-    device_name = device
+    device_name = args.gpu_id
     save_vocab_file_name = "{}.pkl".format(
         to_md5("{}{}{}{}{}{}{}".format(json.dumps(configuration),
                                        embedding_file,
@@ -335,7 +334,7 @@ def prepare_data():
 
         save_data(saved_objects, cached_file_name)
         logger.info("Saved vocab and data to files")
-    logger.info("Using {}".format(vocab.device))
+    logger.info("Using {}".format(args.gpu_id))
 
     logger.info("# levels: {}".format(len(labels)))
     for label_lvl in range(len(labels)):
