@@ -45,15 +45,15 @@ class Evaluator:
         for text_batch, label_batch, length_batch, id_batch in \
                 tqdm(dataloader, unit="batches", desc="Evaluating"):
 
-            text_batch = text_batch.to(model.args.gpu_id)
+            text_batch = text_batch.to(self.model.args.gpu_id)
             for idx in range(len(label_batch)):
-                label_batch[idx] = label_batch[idx].to(model.args.gpu_id)
+                label_batch[idx] = label_batch[idx].to(self.model.args.gpu_id)
 
             if type(length_batch) == list:
                 for i in range(len(length_batch)):
-                    length_batch[i] = length_batch[i].to(model.args.gpu_id)
+                    length_batch[i] = length_batch[i].to(self.model.args.gpu_id)
             else:
-                length_batch = length_batch.to(model.args.gpu_id)
+                length_batch = length_batch.to(self.model.args.gpu_id)
 
             true_label_batch = []
             for idx in range(len(label_batch)):
