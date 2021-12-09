@@ -399,13 +399,13 @@ class RNN_gcn(nn.Module):
         gcn_output1 = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
         if self.args.gcn_both:
             gcn_output = torch.cat((gcn_output0, gcn_output1), 1)
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
 
         else:
             gcn_output = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
         
@@ -825,13 +825,13 @@ class RNN_GCN_CON(nn.Module):
         gcn_output1 = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
         if self.args.gcn_both:
             gcn_output = torch.cat((gcn_output0, gcn_output1), 1)
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
 
         else:
             gcn_output = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
         
@@ -981,13 +981,13 @@ class RNN_cnn_gcn_con(nn.Module):
         gcn_output1 = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
         if self.args.gcn_both:
             gcn_output = torch.cat((gcn_output0, gcn_output1), 1)
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
 
         else:
             gcn_output = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
         
@@ -1061,13 +1061,13 @@ class RNN_BIGRU_GCN_CON(nn.Module):
         gcn_output1 = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
         if self.args.gcn_both:
             gcn_output = torch.cat((gcn_output0, gcn_output1), 1)
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
 
         else:
             gcn_output = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
             
@@ -1323,13 +1323,13 @@ class RNN_rnn_cnn_gcn_con(nn.Module):
         gcn_output1 = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
         if self.args.gcn_both:
             gcn_output = torch.cat((gcn_output0, gcn_output1), 1)
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
 
         else:
             gcn_output = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
         
@@ -1457,13 +1457,13 @@ class RNN_rnn_gcn_bigru_con(nn.Module):
         gcn_output1 = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
         if self.args.gcn_both:
             gcn_output = torch.cat((gcn_output0, gcn_output1), 1)
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
 
         else:
             gcn_output = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
             
@@ -1582,13 +1582,13 @@ class RNN_cnn_gcn_bigru_con(nn.Module):
         gcn_output1 = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
         if self.args.gcn_both:
             gcn_output = torch.cat((gcn_output0, gcn_output1), 1)
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
 
         else:
             gcn_output = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
         
@@ -1706,13 +1706,13 @@ class RNN_rnn_gcn_bigru__cnn_con(nn.Module):
         gcn_output1 = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
         if self.args.gcn_both:
             gcn_output = torch.cat((gcn_output0, gcn_output1), 1)
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
 
         else:
             gcn_output = self.gcn_1_layer[1](self.gcn_1_data[1]).t()
-            gcn_output = gcn_output.expand(self.args.batch_size, 
+            gcn_output = gcn_output.expand(batch_size, 
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
             
