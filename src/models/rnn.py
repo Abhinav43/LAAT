@@ -137,7 +137,7 @@ from torch.autograd import Variable
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 from src.models.attentions.util import *
 from src.models.embeddings.util import *
-from src.data_helpers.vocab import Vocab, device
+from src.data_helpers.vocab import Vocab
 from src.models.multires_cnn import *
 from src.models.multires_rnn import *
 from src.models.gcn import *
@@ -210,8 +210,8 @@ class RNN(nn.Module):
             The initialised hidden layer
         """
         # [(n_layers x n_directions) x batch_size x hidden_size]
-        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
-        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
+        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
+        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
         if self.rnn_model.lower() == "gru":
             return h
         return h, c
@@ -363,11 +363,11 @@ class RNN_gcn(nn.Module):
         
         
         
-        self.gcn_1_data  = gc_data(self.n_labels, adj_type, device, emd_type)
+        self.gcn_1_data  = gc_data(self.n_labels, adj_type, self.args.gpu_id, emd_type)
         self.gcn_1_layer = gcn_l(self.n_labels,  self.gcn_1_data[0][0].shape[-1], 
                              self.args.max_seq_length, inner_dims = 1024, 
                              drop = self.args.gcn_drop, 
-                             att  = self.args.gcn_att, device = device)
+                             att  = self.args.gcn_att, device = self.args.gpu_id)
         
         if self.args.gcn_both:
             self.output_size = self.n_labels[0] + self.n_labels[1]
@@ -525,8 +525,8 @@ class RNN_CNN_CON(nn.Module):
             The initialised hidden layer
         """
         # [(n_layers x n_directions) x batch_size x hidden_size]
-        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
-        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
+        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
+        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
         if self.rnn_model.lower() == "gru":
             return h
         return h, c
@@ -649,8 +649,8 @@ class RNN_BIGRU_CON(nn.Module):
             The initialised hidden layer
         """
         # [(n_layers x n_directions) x batch_size x hidden_size]
-        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
-        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
+        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
+        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
         if self.rnn_model.lower() == "gru":
             return h
         return h, c
@@ -750,11 +750,11 @@ class RNN_GCN_CON(nn.Module):
         self.dropout = args.dropout
         self.embedding = init_embedding_layer(args, vocab)
         
-        self.gcn_1_data  = gc_data(self.n_labels, adj_type, device, emd_type)
+        self.gcn_1_data  = gc_data(self.n_labels, adj_type, self.args.gpu_id, emd_type)
         self.gcn_1_layer = gcn_l(self.n_labels,  self.gcn_1_data[0][0].shape[-1], 
                              self.args.max_seq_length, inner_dims = 1024, 
                              drop = self.args.gcn_drop, 
-                             att  = self.args.gcn_att, device = device)
+                             att  = self.args.gcn_att, device = self.args.gpu_id)
         
         if self.args.gcn_both:
             self.output_size = (self.hidden_size * self.n_directions) + self.n_labels[0] + self.n_labels[1]
@@ -783,8 +783,8 @@ class RNN_GCN_CON(nn.Module):
             The initialised hidden layer
         """
         # [(n_layers x n_directions) x batch_size x hidden_size]
-        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
-        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
+        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
+        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
         if self.rnn_model.lower() == "gru":
             return h
         return h, c
@@ -947,11 +947,11 @@ class RNN_cnn_gcn_con(nn.Module):
         init_attention_layer(self)
         
         
-        self.gcn_1_data  = gc_data(self.n_labels, adj_type, device, emd_type)
+        self.gcn_1_data  = gc_data(self.n_labels, adj_type, self.args.gpu_id, emd_type)
         self.gcn_1_layer = gcn_l(self.n_labels,  self.gcn_1_data[0][0].shape[-1], 
                              self.args.max_seq_length, inner_dims = 1024, 
                              drop = self.args.gcn_drop, 
-                             att  = self.args.gcn_att, device = device)
+                             att  = self.args.gcn_att, device = self.args.gpu_id)
         
         if self.args.gcn_both:
             self.output_size = self.n_labels[0] + self.n_labels[1]
@@ -1030,11 +1030,11 @@ class RNN_BIGRU_GCN_CON(nn.Module):
 
         self.multires_rnn = BiGRU(rnn_att = self.args.rnn_att, rnn_dim=1024)
         
-        self.gcn_1_data  = gc_data(self.n_labels, adj_type, device, emd_type)
+        self.gcn_1_data  = gc_data(self.n_labels, adj_type, self.args.gpu_id, emd_type)
         self.gcn_1_layer = gcn_l(self.n_labels,  self.gcn_1_data[0][0].shape[-1], 
                              self.args.max_seq_length, inner_dims = 1024, 
                              drop = self.args.gcn_drop, 
-                             att  = self.args.gcn_att, device = device)
+                             att  = self.args.gcn_att, device = self.args.gpu_id)
             
         self.use_dropout = args.dropout > 0
         self.dropout = nn.Dropout(args.dropout)
@@ -1141,8 +1141,8 @@ class RNN_rnn_cnn_bigru_con(nn.Module):
             The initialised hidden layer
         """
         # [(n_layers x n_directions) x batch_size x hidden_size]
-        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
-        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
+        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
+        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
         if self.rnn_model.lower() == "gru":
             return h
         return h, c
@@ -1260,11 +1260,11 @@ class RNN_rnn_cnn_gcn_con(nn.Module):
             
             
             
-        self.gcn_1_data  = gc_data(self.n_labels, adj_type, device, emd_type)
+        self.gcn_1_data  = gc_data(self.n_labels, adj_type, self.args.gpu_id, emd_type)
         self.gcn_1_layer = gcn_l(self.n_labels,  self.gcn_1_data[0][0].shape[-1], 
                              self.args.max_seq_length, inner_dims = 1024, 
                              drop = self.args.gcn_drop, 
-                             att  = self.args.gcn_att, device = device)
+                             att  = self.args.gcn_att, device = self.args.gpu_id)
 
         self.use_dropout = args.dropout > 0
         self.dropout = nn.Dropout(args.dropout)
@@ -1280,8 +1280,8 @@ class RNN_rnn_cnn_gcn_con(nn.Module):
             The initialised hidden layer
         """
         # [(n_layers x n_directions) x batch_size x hidden_size]
-        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
-        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
+        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
+        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
         if self.rnn_model.lower() == "gru":
             return h
         return h, c
@@ -1396,11 +1396,11 @@ class RNN_rnn_gcn_bigru_con(nn.Module):
             self.output_size = self.output_size + self.n_labels[1]
             
             
-        self.gcn_1_data  = gc_data(self.n_labels, adj_type, device, emd_type)
+        self.gcn_1_data  = gc_data(self.n_labels, adj_type, self.args.gpu_id, emd_type)
         self.gcn_1_layer = gcn_l(self.n_labels,  self.gcn_1_data[0][0].shape[-1], 
                              self.args.max_seq_length, inner_dims = 1024, 
                              drop = self.args.gcn_drop, 
-                             att  = self.args.gcn_att, device = device)
+                             att  = self.args.gcn_att, device = self.args.gpu_id)
 
         
         self.dropout = args.dropout
@@ -1426,8 +1426,8 @@ class RNN_rnn_gcn_bigru_con(nn.Module):
             The initialised hidden layer
         """
         # [(n_layers x n_directions) x batch_size x hidden_size]
-        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
-        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
+        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
+        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
         if self.rnn_model.lower() == "gru":
             return h
         return h, c
@@ -1547,11 +1547,11 @@ class RNN_cnn_gcn_bigru_con(nn.Module):
         init_attention_layer(self)
         
         
-        self.gcn_1_data  = gc_data(self.n_labels, adj_type, device, emd_type)
+        self.gcn_1_data  = gc_data(self.n_labels, adj_type, self.args.gpu_id, emd_type)
         self.gcn_1_layer = gcn_l(self.n_labels,  self.gcn_1_data[0][0].shape[-1], 
                              self.args.max_seq_length, inner_dims = 1024, 
                              drop = self.args.gcn_drop, 
-                             att  = self.args.gcn_att, device = device)
+                             att  = self.args.gcn_att, device = self.args.gpu_id)
         
         if self.args.gcn_both:
             self.output_size = self.n_labels[0] + self.n_labels[1]
@@ -1643,11 +1643,11 @@ class RNN_rnn_gcn_bigru__cnn_con(nn.Module):
             self.output_size = self.output_size + self.n_labels[1]
             
             
-        self.gcn_1_data  = gc_data(self.n_labels, adj_type, device, emd_type)
+        self.gcn_1_data  = gc_data(self.n_labels, adj_type, self.args.gpu_id, emd_type)
         self.gcn_1_layer = gcn_l(self.n_labels,  self.gcn_1_data[0][0].shape[-1], 
                              self.args.max_seq_length, inner_dims = 1024, 
                              drop = self.args.gcn_drop, 
-                             att  = self.args.gcn_att, device = device)
+                             att  = self.args.gcn_att, device = self.args.gpu_id)
 
         
         self.dropout = args.dropout
@@ -1673,8 +1673,8 @@ class RNN_rnn_gcn_bigru__cnn_con(nn.Module):
             The initialised hidden layer
         """
         # [(n_layers x n_directions) x batch_size x hidden_size]
-        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
-        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(device)
+        h = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
+        c = Variable(torch.zeros(self.n_layers * self.n_directions, batch_size, self.hidden_size)).to(self.args.gpu_id)
         if self.rnn_model.lower() == "gru":
             return h
         return h, c
