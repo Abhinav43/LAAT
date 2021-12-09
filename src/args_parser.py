@@ -168,6 +168,7 @@ def create_args_parser():
     parser.add_argument("--max_seq_length", type=int, default=4000)
     parser.add_argument("--min_seq_length", type=int, default=-1)
     parser.add_argument("--min_word_frequency", type=int, default=-1)
+    parser.add_argument("--gpu_id", type=int, default=0)
 
     # Embedding
     parser.add_argument("--mode", type=str, default="static",
