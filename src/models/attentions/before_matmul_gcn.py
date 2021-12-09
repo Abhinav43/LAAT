@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from src.data_helpers.vocab import device
 from src.models.gcn import *
 
 adj_type   = 'occ_tboth'
@@ -34,6 +33,7 @@ class AttentionLayer(nn.Module):
         # For self-attention: d_a and r are the dimension of the dense layer and the number of attention-hops
         # d_a is the output size of the first linear layer
         self.d_a = args.d_a if args.d_a > 0 else self.size
+        device = self.args.gpu_id
 
         # r is the number of attention heads
         
