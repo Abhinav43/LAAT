@@ -1,7 +1,5 @@
 from src.data_helpers.dataloaders import *
 import warnings
-from src.data_helpers.vocab import device
-
 from src.util.util import *
 from tqdm import tqdm
 from collections import OrderedDict
@@ -23,6 +21,8 @@ class Evaluator:
         self.multilabel = model.args.multilabel
         self.criterions = criterions
         self.n_training_labels = n_training_labels
+        
+        
 
     def evaluate(self,
                  dataloader: TextDataLoader) -> dict:
@@ -45,15 +45,15 @@ class Evaluator:
         for text_batch, label_batch, length_batch, id_batch in \
                 tqdm(dataloader, unit="batches", desc="Evaluating"):
 
-            text_batch = text_batch.to(device)
+            text_batch = text_batch.to(model.args.gpu_id)
             for idx in range(len(label_batch)):
-                label_batch[idx] = label_batch[idx].to(device)
+                label_batch[idx] = label_batch[idx].to(model.args.gpu_id)
 
             if type(length_batch) == list:
                 for i in range(len(length_batch)):
-                    length_batch[i] = length_batch[i].to(device)
+                    length_batch[i] = length_batch[i].to(model.args.gpu_id)
             else:
-                length_batch = length_batch.to(device)
+                length_batch = length_batch.to(model.args.gpu_id)
 
             true_label_batch = []
             for idx in range(len(label_batch)):
