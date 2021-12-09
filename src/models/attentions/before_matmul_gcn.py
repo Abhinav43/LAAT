@@ -55,8 +55,8 @@ class AttentionLayer(nn.Module):
         
         self.gcn_1_layer = gcn_l(n_labels,  self.gcn_1_data[0][0].shape[-1], 
                                  [self.size, self.size + level_projection_size], inner_dims = 1024, 
-                                 drop = self.args.gcn_drop, 
-                                 att  = self.args.gcn_att, device = device)
+                                 drop = self.args.before_matmul_gcn_drop, 
+                                 att  = self.args.before_matmul_gcn_att, device = device)
 
         """ Gcn layers """
         
