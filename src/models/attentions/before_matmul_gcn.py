@@ -60,23 +60,6 @@ class AttentionLayer(nn.Module):
 
         """ Gcn layers """
         
-        
-        
-        """ Attention layers concat """
-        
-        self.concat_1_att    = nn.ModuleList([att_layer(n_labels[label_lvl], 
-                                                        self.size) for label_lvl in range(len(n_labels))])
-        self.concat_2_att    = nn.ModuleList([att_layer(n_labels[label_lvl],
-                                                        n_labels[label_lvl])
-                                              for label_lvl in range(len(n_labels))])
-        self.concat_3_att    = nn.ModuleList([att_layer(self.size + (level_projection_size if label_lvl > 0 else 0),
-                                                        n_labels[label_lvl])
-                                              for label_lvl in range(len(n_labels))])
-        
-        self.final_att       = nn.ModuleList([att_layer(n_labels[label_lvl], self.args.batch_size)
-                                              for label_lvl in range(len(n_labels))])
-        
-        """ Attention layers concat """
 
         self.n_labels = n_labels
         self.n_level = n_level
