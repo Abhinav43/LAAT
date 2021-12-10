@@ -247,8 +247,8 @@ class RNN(nn.Module):
 
         rnn_output = rnn_output.permute(1, 0, 2)
 
-        weighted_outputs, attention_weights = perform_attention(self, rnn_output,
-                                                                self.get_last_hidden_output(hidden), current_batch_size = batch_size
+        weighted_outputs, attention_weights = perform_attention(self, rnn_output, self.get_last_hidden_output(hidden), 
+                                                                current_batch_size = batch_size
                                                                 )
         return weighted_outputs, attention_weights
 
