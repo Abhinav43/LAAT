@@ -248,7 +248,7 @@ class RNN(nn.Module):
         rnn_output = rnn_output.permute(1, 0, 2)
 
         weighted_outputs, attention_weights = perform_attention(self, rnn_output,
-                                                                self.get_last_hidden_output(hidden)
+                                                                self.get_last_hidden_output(hidden), current_batch_size = batch_size
                                                                 )
         return weighted_outputs, attention_weights
 
@@ -328,7 +328,7 @@ class RNN_cnn(nn.Module):
         
         cnn_output = self.multires_cn(embeds)
 
-        weighted_outputs, attention_weights = perform_attention(self, cnn_output)
+        weighted_outputs, attention_weights = perform_attention(self, cnn_output, current_batch_size = batch_size)
         return weighted_outputs, attention_weights
     
  
@@ -409,7 +409,7 @@ class RNN_gcn(nn.Module):
                                            gcn_output.size()[0], 
                                            gcn_output.size()[1])
         
-        weighted_outputs, attention_weights = perform_attention(self, gcn_output)
+        weighted_outputs, attention_weights = perform_attention(self, gcn_output, current_batch_size = batch_size)
         return weighted_outputs, attention_weights
     
     
@@ -462,7 +462,7 @@ class RNN_BIGRU(nn.Module):
         batch_size = batch_data.size()[0]
         embeds = self.embedding(batch_data)
         bigru_output = self.multires_rnn(embeds, lengths.cpu())
-        weighted_outputs, attention_weights = perform_attention(self, bigru_output)
+        weighted_outputs, attention_weights = perform_attention(self, bigru_output, current_batch_size = batch_size)
         return weighted_outputs, attention_weights
     
 # python3 -m src.run --problem_name mimic-iii_2_50 --max_seq_length 4000 --n_epoch 50 --patience 5 --batch_size 8 --optimiser adamw --lr 0.001 --dropout 0.3 --level_projection_size 128 --main_metric micro_f1 --exp_name experiment_base --embedding_mode word2vec --embedding_file data/embeddings/word2vec_sg0_100.model --attention_mode label --d_a 512 RNN_CNN_CON --rnn_model LSTM --n_layers 1 --bidirectional 1 --hidden_size 512 --cnn_filter_size 500
@@ -568,7 +568,7 @@ class RNN_CNN_CON(nn.Module):
         
 
         weighted_outputs, attention_weights = perform_attention(self, df ,
-                                                                self.get_last_hidden_output(hidden)
+                                                                self.get_last_hidden_output(hidden), current_batch_size = batch_size
                                                                 )
         return weighted_outputs, attention_weights
 
@@ -690,7 +690,7 @@ class RNN_BIGRU_CON(nn.Module):
         df         = torch.cat((rnn_output, bigru_output), 2)        
         
         weighted_outputs, attention_weights = perform_attention(self, df ,
-                                                                self.get_last_hidden_output(hidden)
+                                                                self.get_last_hidden_output(hidden),current_batch_size = batch_size
                                                                 )
         return weighted_outputs, attention_weights
 
@@ -838,7 +838,7 @@ class RNN_GCN_CON(nn.Module):
         df = torch.cat((rnn_output, gcn_output), 2)
 
         weighted_outputs, attention_weights = perform_attention(self, df ,
-                                                                self.get_last_hidden_output(hidden)
+                                                                self.get_last_hidden_output(hidden),current_batch_size = batch_size
                                                                 )
         return weighted_outputs, attention_weights
 
@@ -906,7 +906,7 @@ class RNN_cnn_bigru_con(nn.Module):
         
         df         = torch.cat((cnn_output, rnn_out), 2)
 
-        weighted_outputs, attention_weights = perform_attention(self, df)
+        weighted_outputs, attention_weights = perform_attention(self, df, current_batch_size = batch_size)
         return weighted_outputs, attention_weights
     
 #     python3 -m src.run --problem_name mimic-iii_2_50 --max_seq_length 4000 --n_epoch 50 --patience 5 --batch_size 8 --optimiser adamw --lr 0.001 --dropout 0.3 --level_projection_size 128 --main_metric micro_f1 --exp_name experiment_base --embedding_mode word2vec --embedding_file data/embeddings/word2vec_sg0_100.model --output_size 3000 --attention_mode label --d_a 512 RNN_cnn_gcn_con --cnn_filter_size 500 --gcn_both 1
@@ -995,7 +995,7 @@ class RNN_cnn_gcn_con(nn.Module):
         
         df         = torch.cat((cnn_output, gcn_output), 2)
 
-        weighted_outputs, attention_weights = perform_attention(self, df)
+        weighted_outputs, attention_weights = perform_attention(self, df, current_batch_size = batch_size)
         return weighted_outputs, attention_weights
     
 # python3 -m src.run --problem_name mimic-iii_2_50 --max_seq_length 4000 --n_epoch 50 --patience 5 --batch_size 8 --optimiser adamw --lr 0.001 --dropout 0.3 --level_projection_size 128 --main_metric micro_f1 --exp_name experiment_base --embedding_mode word2vec --embedding_file data/embeddings/word2vec_sg0_100.model --attention_mode label --d_a 512 RNN_BIGRU_GCN_CON --gcn_both 1
@@ -1075,7 +1075,7 @@ class RNN_BIGRU_GCN_CON(nn.Module):
         df         = torch.cat((bigru_output, gcn_output), 2)
         
         
-        weighted_outputs, attention_weights = perform_attention(self, df)
+        weighted_outputs, attention_weights = perform_attention(self, df, current_batch_size = batch_size)
         return weighted_outputs, attention_weights
     
     
@@ -1184,7 +1184,7 @@ class RNN_rnn_cnn_bigru_con(nn.Module):
         df = torch.cat((rnn_output, cnn_out, bigru_out), 2)        
 
         weighted_outputs, attention_weights = perform_attention(self, df,
-                                                                self.get_last_hidden_output(hidden)
+                                                                self.get_last_hidden_output(hidden), current_batch_size = batch_size
                                                                 )
         return weighted_outputs, attention_weights
 
@@ -1335,7 +1335,7 @@ class RNN_rnn_cnn_gcn_con(nn.Module):
         
         df = torch.cat((rnn_output, cnn_out, gcn_output), 2)
         weighted_outputs, attention_weights = perform_attention(self, df,
-                                                                self.get_last_hidden_output(hidden)
+                                                                self.get_last_hidden_output(hidden), current_batch_size = batch_size
                                                                 )
         return weighted_outputs, attention_weights
 
@@ -1483,7 +1483,7 @@ class RNN_rnn_gcn_bigru_con(nn.Module):
         df = torch.cat((rnn_output, gcn_output, bigru_out), 2)        
 
         weighted_outputs, attention_weights = perform_attention(self, df,
-                                                                self.get_last_hidden_output(hidden)
+                                                                self.get_last_hidden_output(hidden), current_batch_size = batch_size
                                                                 )
         return weighted_outputs, attention_weights
 
@@ -1594,7 +1594,7 @@ class RNN_cnn_gcn_bigru_con(nn.Module):
         
                 
         df         = torch.cat((cnn_output, gcn_output, bigru_out), 2)
-        weighted_outputs, attention_weights = perform_attention(self, df)
+        weighted_outputs, attention_weights = perform_attention(self, df, current_batch_size = batch_size)
         return weighted_outputs, attention_weights
     
     
@@ -1731,7 +1731,7 @@ class RNN_rnn_gcn_bigru__cnn_con(nn.Module):
         
         df = torch.cat((rnn_output, gcn_output, bigru_out, cnn_out), 2)
         weighted_outputs, attention_weights = perform_attention(self, df,
-                                                                self.get_last_hidden_output(hidden)
+                                                                self.get_last_hidden_output(hidden), current_batch_size = batch_size
                                                                 )
         return weighted_outputs, attention_weights
 
