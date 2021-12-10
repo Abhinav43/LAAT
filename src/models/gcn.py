@@ -109,6 +109,14 @@ def gcn_l(n_labels, emd_dim, output_dim,
                                           inner_dims   = inner_dims,
                                           dropout      = drop,
                                           att= att).to(device) for label_lvl in range(len(n_labels))])
+    elif output_dim == None:
+        gcn_layer    = nn.ModuleList([GCN(total_labels = n_labels[label_lvl],
+                                          emd_dim      = emd_dim,
+                                          out_dim      = output_dim,
+                                          inner_dims   = inner_dims,
+                                          dropout      = drop,
+                                          att= att).to(device) for label_lvl in range(len(n_labels))])
+        
     else:
         gcn_layer    = nn.ModuleList([GCN(total_labels = n_labels[label_lvl],
                                           emd_dim      = emd_dim,
