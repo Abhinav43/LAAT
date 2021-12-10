@@ -18,7 +18,8 @@ class AttentionLayer(nn.Module):
                  size: int,
                  level_projection_size: int = 0,
                  n_labels=None,
-                 n_level: int = 1
+                 n_level: int = 1, 
+                 current_batch_size = None
                  ):
         """
         The init function
@@ -55,7 +56,7 @@ class AttentionLayer(nn.Module):
         """ Gcn layers """
         
         self.gcn_1_layer = gcn_l(n_labels,  self.gcn_1_data[0][0].shape[-1], 
-                                 self.args.batch_size, inner_dims = 1024, 
+                                 current_batch_size, inner_dims = 1024, 
                                  drop = self.args.after_sum_gcn_drop, 
                                  att  = self.args.after_sum_gcn_att, device = device)
 
