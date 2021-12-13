@@ -31,7 +31,7 @@ def init_attention_layer(model):
         model.r = model.attention.r
 
 
-def perform_attention(model, all_output, last_output=None, current_batch_size = None):
+def perform_attention(model, all_output, last_output=None):
     attention_weights = None
     if model.args.joint_mode == "flat":
         if model.attention_mode is not None:
@@ -65,7 +65,7 @@ def perform_attention(model, all_output, last_output=None, current_batch_size = 
             attention_weights = []
             for level in range(model.vocab.n_level()):
                 weighted_output, attention_weight = model.attention(all_output,
-                                                                    previous_level_projection, label_level=level, current_batch_size)
+                                                                    previous_level_projection, label_level=level)
                 if model.attention_mode not in ["label", "caml"]:
                     if model.use_dropout:
                         weighted_output = model.dropout(weighted_output)
