@@ -18,9 +18,8 @@ class AttentionLayer(nn.Module):
                  size: int,
                  level_projection_size: int = 0,
                  n_labels=None,
-                 n_level: int = 1, 
-                 current_batch_size = None
-                 ):
+                 n_level: int = 1                 
+                ):
         """
         The init function
         :param args: the input parameters from commandline
@@ -30,7 +29,7 @@ class AttentionLayer(nn.Module):
         super(AttentionLayer, self).__init__()
         self.attention_mode = args.attention_mode
         self.args           = args
-        device              = self.args.gpu_id
+        self.device              = self.args.gpu_id
 
         self.size = size
         # For self-attention: d_a and r are the dimension of the dense layer and the number of attention-hops
@@ -42,9 +41,9 @@ class AttentionLayer(nn.Module):
         
         """ GCN data """
 
-        self.gcn_1_data  = gc_data(n_labels, adj_type, device, emd_type)
-        self.gcn_2_data  = gc_data(n_labels, adj_type, device, emd_type)
-        self.gcn_3_data  = gc_data(n_labels, adj_type, device, emd_type)
+        self.gcn_1_data  = gc_data(n_labels, adj_type, self.device, emd_type)
+        self.gcn_2_data  = gc_data(n_labels, adj_type, self.device, emd_type)
+        self.gcn_3_data  = gc_data(n_labels, adj_type, self.device, emd_type)
         
         
         """ Gcn data """
@@ -55,10 +54,7 @@ class AttentionLayer(nn.Module):
         
         """ Gcn layers """
         
-        self.gcn_1_layer = gcn_l(n_labels,  self.gcn_1_data[0][0].shape[-1], 
-                                 current_batch_size, inner_dims = 1024, 
-                                 drop = self.args.after_sum_gcn_drop, 
-                                 att  = self.args.after_sum_gcn_att, device = device)
+        
 
         """ Gcn layers """
         
@@ -153,7 +149,12 @@ class AttentionLayer(nn.Module):
                 
             weighted_output = self.third_linears[label_level].weight.mul(weighted_output).sum(dim=2).add(
                 self.third_linears[label_level].bias)
-
+            
+            self.gcn_1_layer = gcn_l(self.n_labels,  self.gcn_1_data[0][0].shape[-1], 
+                                 weighted_output.size()[0], inner_dims = 1024, 
+                                 drop = self.args.after_sum_gcn_drop, 
+                                 att  = self.args.after_sum_gcn_att, device = self.device)
+            
 
             weighted_output = after_sum_bottom(weighted_output, 
                                     self.gcn_1_layer, 
